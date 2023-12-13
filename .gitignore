@@ -1,0 +1,40 @@
+# Operating system
+Desktop.ini
+Thumbs.db
+.Spotlight-V100
+.Trashes
+.DS_Store
+
+# Local env files
+.npmrc
+.env.local
+.env.*.local
+
+# JavaScript ecosystem
+node_modules
+
+# Log files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Generated files and folders
+dist
+dist-ssr
+*.local
+*.css.map
+*.css
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
