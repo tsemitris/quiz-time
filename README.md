@@ -35,9 +35,8 @@ Klicka i vilka krav ni har gjort:
 - [ ] Det ska visas en bekräftelseruta som visar hur många frågor spelaren svarade rätt på (av totalt antal frågor), och hur lång tid det tog.
 - [ ] Varje person ska ha gjort minst två pull requests.
 
-### För Väl Godkänt
+### För plus i kanten
 #### Kodkvalitet
-- [ ] Utöver kraven för G gäller…
 - [ ] Koden följer konventioner och praxis.
 - [ ] Projektets utförande är ambitiöst och väl genomarbetat. Ni har inte tagit på er för mycket, utan sett till att det ni har är genomarbetat.
 - [ ] Ni har tagit höjd för responsiv design (CSS) och CSS:en är välskriven.
@@ -50,7 +49,6 @@ Klicka i vilka krav ni har gjort:
 - [ ] Ni har skrivit en ordentlig README (projektbeskrivning, skrämdumpar, deltagare i arbetet).
 
 #### Funktionsbeskrivning
-- [ ] Utöver kraven för G…
 - [ ] Det ska finnas en "progess bar" som visar hur många av frågorna som hittills har besvarats
 - [ ] Flera svarsalternativ ska kunna vara korrekta
 - [ ] Du får olika poäng beroende på hur snabbt du svarar på frågan (ni får komma på själva hur det ska funka, dokumentera i README:n)
