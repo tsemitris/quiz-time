@@ -29,6 +29,11 @@
 
 -Vi kommer att ta julledigt på mellandagarna. (MEN vi stämmer av med varandra om hur vi ligger till i projektet. Ligger vi jättemycket efter så få vi kanske arbeta någon enstaka dag)
 
+## Kvar att svara på
+-    vilken linting- och prettier-konfiguration ni kör
+-    hur, när och vem gör code reviews/merges - när får man merge:a in i branchen? (föreslår att ni inte väljer "när du är klar", utan ni bör testa/kontrollera att det även fungerar på någon annans dator)
+
+
 ## Underskrivet av
 @Ogen1998
 @DiemBang
