@@ -9,6 +9,7 @@
 
 Testar att branch fungerar.
 
+Testar att PullRequestRule fungerar
 
 
 I denna fil skriver ni, efter överenskommelse och diskussion:
