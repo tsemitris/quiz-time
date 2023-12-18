@@ -32,11 +32,14 @@
 ## Hur er tidsplan ser ut, vad ni har för milstolpar och hur ni hanterar om ni märker att ni hamnar efter/före i planeringen
 - Vi hjälper till när någon ligger efter
 - <strong>Vi kommer att ta julledigt på mellandagarna. (MEN vi stämmer av med varandra om hur vi ligger till i projektet. Ligger vi jättemycket efter så få vi kanske arbeta någon enstaka dag)</strong>
+- Vi kommer att köra 15 min scrum meeting varje dag.
+- Vi ska sätta upp veckomål som vi sedan följer upp
 
-# Kvar att svara på
--    vilken linting- och prettier-konfiguration ni kör
--    hur, när och vem gör code reviews/merges - när får man merge:a in i branchen? (föreslår att ni inte väljer "när du är klar", utan ni bör testa/kontrollera att det även fungerar på någon annans dator)
+## vilken linting- och prettier-konfiguration ni kör
+- Vi kommer att köra med standardinställningar. Vi kör med NPM.
 
+## - hur, när och vem gör code reviews/merges - när får man merge:a in i branchen? (föreslår att ni inte väljer "när du är klar", utan ni bör testa/kontrollera att det även fungerar på någon annans dator)
+- Vi har valt att 2 personer måste göra en review på pull request, de personerna ska också testa på sin dator om det fungarar eller ej. Sen ska den sista personen som måste göra approve, också skriva i discord att en merge ska ske så att alla vet om det. Vi kommer använda Github och Github desktop.
 
 ## Underskrivet av
 @Ogen1998 <br>
