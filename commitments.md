@@ -14,7 +14,7 @@
 - Agera med respekt gentemot varandra, ge konstruktiv feedback, EJ PEKA UT NÅGON.
 
 ## Vad är ambitionsnivån
-- Ambitionsnivån är att klara sig och lära sig ämnet.
+- Ambitionsnivån är att klara uppgiften och lära sig TypeScript.
 
 ## Vad är kul? vad är tråkigt?
 - Design är kul
@@ -30,16 +30,22 @@
 - Vi använder miro.com för att strukturera upp och skapa mindmaps
 
 ## Hur er tidsplan ser ut, vad ni har för milstolpar och hur ni hanterar om ni märker att ni hamnar efter/före i planeringen
-- Vi hjälper till när någon ligger efter
+- Vi ska sätta upp veckomål som vi sedan följer upp.
+- Vecka 1: Sätta upp en Miro board, wireframes, börja med CSS och gör grunden. Skapa questions-fil, lägga upp frågorna manuellt i en array, object. Börja med funktioner. Göra page 1: starta quiz. 
+- Vecka 2: TBA
+- Vecka 3: TBA
+- Vecka 4: TBA
+
+- Vi hjälper till när någon ligger efter. Viktigt att kommunicera och hålla varandra uppdaterade. 
 - <strong>Vi kommer att ta julledigt på mellandagarna. (MEN vi stämmer av med varandra om hur vi ligger till i projektet. Ligger vi jättemycket efter så få vi kanske arbeta någon enstaka dag)</strong>
 - Vi kommer att köra 15 min scrum meeting varje dag.
-- Vi ska sätta upp veckomål som vi sedan följer upp
 
 ## vilken linting- och prettier-konfiguration ni kör
 - Vi kommer att köra med standardinställningar. Vi kör med NPM.
 
 ## - hur, när och vem gör code reviews/merges - när får man merge:a in i branchen? (föreslår att ni inte väljer "när du är klar", utan ni bör testa/kontrollera att det även fungerar på någon annans dator)
-- Vi har valt att 2 personer måste göra en review på pull request, de personerna ska också testa på sin dator om det fungarar eller ej. Sen ska den sista personen som måste göra approve, också skriva i discord att en merge ska ske så att alla vet om det. Vi kommer använda Github och Github desktop.
+- Vi har valt att 2 personer måste göra en review på pull request, de personerna ska också testa på sin dator om det fungerar eller ej. Sen ska den sista personen som måste göra approve, också skriva i discord att en merge ska ske så att alla vet om det. Vi kommer använda Github och Github desktop.
+- Vi kodar alltid i vår egen branch som vi sedan commitar och pushar för godkännande. 
 
 ## Underskrivet av
 @Ogen1998 <br>
