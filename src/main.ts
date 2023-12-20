@@ -1,5 +1,23 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
-import typescriptLogo from './assets/images/typescript.svg'; // Exempel på hur ni importerar bilder
+
+// FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
+
+const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
+const quizSection: HTMLElement | null = document.querySelector('#quizSection');
+
+startQuizBtn?.addEventListener('click', showQuiz);
+
+function showQuiz(): void {
+  if (startQuizBtn != null) {
+    quizSection?.classList.remove('hidden');
+    startQuizBtn.style.display = 'none';
+  }
+  
+}
+
+
+/**
+ import typescriptLogo from './assets/images/typescript.svg'; // Exempel på hur ni importerar bilder
 import { sortArrayByText } from './helpers'; // Exempel på hur ni importerar en funktion från en annan fil
 
 /**
@@ -8,7 +26,7 @@ import { sortArrayByText } from './helpers'; // Exempel på hur ni importerar en
  * Den är för att garantera att ALLA objekt i vår array har samtliga egenskaper.
  * Prova t.ex. att lägga till en egenskap i interfacet, och notera hur arrayen nedanför
  * får rödmarkeringar där denna egenskap saknas.
- */
+ 
 interface IExampleArray {
   name: string;
   age: number;
@@ -48,4 +66,4 @@ if (container !== null) { // Om HTML-elementet finns
         alt="Blå bakgrund, vita bokstäver ovanpå med texten TS">
     </div>
   `;
-}
+} */

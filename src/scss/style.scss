@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,8 @@
   max-width: 320px;
   margin: 0 auto;
   text-align: center;
+}
+
+.hidden {
+  visibility: hidden;
 }
