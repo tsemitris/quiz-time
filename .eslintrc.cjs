@@ -24,6 +24,7 @@ module.exports = {
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
+    "tsconfigRootDir": __dirname,
   },
   "rules": {
     '@typescript-eslint/comma-dangle': 'off',
