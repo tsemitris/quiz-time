@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <link rel="stylesheet" href="/src/scss/style.css">
+    <title>Quiz-time</title>
   </head>
   <body>
-    <div class="app" id="app"></div>
+    <main>
+      <h1 class="welcome-heading">Welcome!</h1>
+      
+      <button id="startQuizBtn" class="start-quiz-btn">Start Quiz</button>
+
+      <section id="quizSection" class="hidden">
+        Test-text
+
+      </section>
+
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
