@@ -1,5 +1,5 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
-import questions from './questions.ts';
+import {questions, IQuestions} from './questions.ts';
 console.log(questions); // need to use questions. remove after implementing logic. 
 
 // FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
