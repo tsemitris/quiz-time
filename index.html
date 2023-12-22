@@ -1,24 +1,162 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/scss/style.css">
-    <title>Quiz-time</title>
-  </head>
-  <body>
-    <main>
-      <h1 class="welcome-heading">Welcome!</h1>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Website icon -->
+  <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>"> -->
+  <link rel="icon" type="image/png" href="src/assets/logo/bergamotterna_logo.svg">
+   
+  <!-- Website title -->
+  <title>Quiz-time</title>
+  
+  <!-- Font(s) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Style.css -->
+  <link rel="stylesheet" href="src/scss/style.css" type="text/css">
+</head>
+
+<body>
+  <main>
+    <section id="mainPage" class="main-page"> 
+      <!-- Container with empty boxes -->
+      <div class="boxes-container">
+        <div class="upper-container">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        <div class="lower-container">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+      </div>
+
+
+      <article class="main-info-container">
+        <h2 class="head-title">An engaging quiz is ready for you</h2>
+        <p class="under-text">Test your knowledge, challenge yourself, and discover something new!</p>
+        <button class="start-quiz-button" id="startQuizBtn">
+          Start quiz
+        <svg 
+          class="arrow-icon"
+          width="64"
+          height="64"
+          viewBox="0 0 67 64">
+          <path class="startQuizArrow1" d="M45.1552 34.6667L29.5219 49.6L33.5 53.3334L55.8334 32L33.5 10.6667L29.5219 14.4L45.1552 29.3334H11.1667V34.6667H45.1552Z"/>
+          <path class="startQuizArrow2" d="M-9.77244 34L-25.0558 48.9333L-21.1667 52.6667L0.666626 31.3333L-21.1667 10L-25.0558 13.7333L-9.77244 28.6667H-43V34H-9.77244Z" />
+        </svg>
+          
+      </article>
       
-      <button id="startQuizBtn" class="start-quiz-btn">Start Quiz</button>
+      <!-- Main page background -->
+      <div class="background-shapes">
+        <!-- Custom shapes -->
+        <svg class="shapes custom-shape-1" width="618" height="608" viewBox="0 0 618 608" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient1" x1="542.001" y1="256.982" x2="6.87395" y2="374.129"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M1.1197 388.359C31.0858 210.5 304.845 -24.64 468.634 2.95578C632.424 30.5515 631.047 269.914 603.472 433.582C575.897 597.249 499.871 619.612 404.969 603.622C241.18 576.027 -13.1678 473.159 1.1197 388.359Z"
+            fill="url(#gradient1)" />
+        </svg>
+        <svg class="shapes custom-shape-2" width="618" height="608" viewBox="0 0 618 608" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient2" x1="542.001" y1="256.982" x2="6.87395" y2="374.129"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M1.1197 388.359C31.0858 210.5 304.845 -24.64 468.634 2.95578C632.424 30.5515 631.047 269.914 603.472 433.582C575.897 597.249 499.871 619.612 404.969 603.622C241.18 576.027 -13.1678 473.159 1.1197 388.359Z"
+            fill="url(#gradient2)" />
+        </svg>
+        <!-- Circles -->
+        <svg class="shapes circle-shape-1" width="105" height="105" viewBox="0 0 105 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient3" x1="52.5" y1="0" x2="52.5" y2="105" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <circle cx="52.5" cy="52.5" r="49" stroke="url(#gradient3)" stroke-width="7" />
+        </svg>  
+        <svg class="shapes circle-shape-2" width="105" height="105" viewBox="0 0 105 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient4" x1="52.5" y1="0" x2="52.5" y2="105" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <circle cx="52.5" cy="52.5" r="49" stroke="url(#gradient4)" stroke-width="7" />
+        </svg>
+        <!-- Lines -->
+        <svg class="shapes line-shape-1" width="217" height="200" viewBox="0 0 217 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient5" x1="215" y1="1.99996" x2="8" y2="149"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M9.84095 197.604C1.49241 177.788 -6.14841 130.679 30.0767 100.769C75.358 63.3807 171.775 73.9689 214.96 1.99996"
+            stroke="url(#gradient5)" stroke-width="4" stroke-linecap="round" />
+        </svg>
+        <svg class="shapes line-shape-2" width="217" height="200" viewBox="0 0 217 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient6" x1="215" y1="1.99996" x2="8" y2="149"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M9.84095 197.604C1.49241 177.788 -6.14841 130.679 30.0767 100.769C75.358 63.3807 171.775 73.9689 214.96 1.99996"
+            stroke="url(#gradient6)" stroke-width="4" stroke-linecap="round" />
+        </svg>
+        <svg class="shapes line-shape-3" width="217" height="200" viewBox="0 0 217 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient7" x1="215" y1="1.99996" x2="8" y2="149"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5B419D" />
+              <stop offset="100%" stop-color="#815AC0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M9.84095 197.604C1.49241 177.788 -6.14841 130.679 30.0767 100.769C75.358 63.3807 171.775 73.9689 214.96 1.99996"
+            stroke="url(#gradient7)" stroke-width="4" stroke-linecap="round" />
+        </svg>
+      </div>
+    </section>
 
-      <section id="quizSection" class="hidden">
-        Test-text
+    <!-- FIXME overflow conflict  -->
+    <section id="quizPage" class="quiz-page hidden">
+      <h1>🚧 Under development</h1>
+    </section>
+  </main>
 
-      </section>
+  <footer>
+    <p>&#169; All right reserved</p>
+  </footer>
 
-    </main>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <!-- Main script file -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
