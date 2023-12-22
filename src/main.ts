@@ -5,14 +5,15 @@ console.log(questions); // need to use questions. remove after implementing logi
 // FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
 
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
-const quizSection: HTMLElement | null = document.querySelector('#quizSection');
+const mainPage: HTMLElement | null = document.querySelector('#mainPage');
+const quizPage: HTMLElement | null = document.querySelector('#quizPage');
 
 startQuizBtn?.addEventListener('click', showQuiz);
 
 function showQuiz(): void {
   if (startQuizBtn != null) {
-    quizSection?.classList.remove('hidden');
-    startQuizBtn.style.display = 'none';
+    mainPage?.classList.toggle('hidden');
+    quizPage?.classList.toggle('hidden');
   }
   
 }
