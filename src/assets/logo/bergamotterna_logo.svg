@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00bdd5;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 610px;
+        fill: #fff;
+        font-family: "Donut Shop";
+      }
+
+      .cls-3 {
+        fill: #ffdd18;
+        filter: url(#filter-2);
+      }
+
+      .cls-4 {
+        fill: #f64337;
+        filter: url(#filter-3);
+      }
+    </style>
+    <filter id="filter" x="200" y="165" width="700" height="708" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-2.121" dy="-2.121" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.236"/>
+      <feFlood result="flood" flood-opacity="0.22"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="652" y="128" width="922" height="769" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-2.121" dy="-2.121" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.236"/>
+      <feFlood result="flood" flood-opacity="0.22"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-3" x="1105" y="320" width="549" height="576" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-2.121" dy="-2.121" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.236"/>
+      <feFlood result="flood" flood-opacity="0.22"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path class="cls-1" d="M675.76,745.564C573.686,769.128,805.547,869.37,805.547,869.37c-0.3.411-213.649-1.039-268.437-78.013C101.954,784.494,80.547,210.79,563.891,172.88,978.972,140.324,993.269,662.091,675.76,745.564Z"/>
+  <text id="_" data-name="?" class="cls-2" transform="translate(358.095 627.308) rotate(12.237) scale(0.859)">?</text>
+  <path class="cls-3" d="M737.708,256.008s3.1-1.62,622.722-114.3c10.42-1.9,139.82-36.755,154.55,61.872s39.05,230.014,53.45,363.665-58.25,122.5-58.25,122.5l-557.286,98.32,67.836,105.317L875.749,801.939l-68.9,7.539s-54.677,18.746-72.78-50.037S672.46,422.322,659.466,339.366C645.278,248.78,737.708,256.008,737.708,256.008Z"/>
+  <text id="_2" data-name="!" class="cls-2" transform="translate(875.057 707.225) rotate(-14.993) scale(0.888)">!</text>
+  <text id="_copy" data-name="! copy" class="cls-2" transform="matrix(0.674, -0.023, 0.023, 0.674, 1046.799, 648.269)">!</text>
+  <path id="Shape_1_copy" data-name="Shape 1 copy" class="cls-4" d="M1256.66,770.7c77.46,28.612-117.45,113.12-117.45,113.12,0.19,0.352,170.47,42.747,221.29-63.483,340.99,38.106,415.17-408.094,40.98-486C1080.14,267.426,1016.71,673.749,1256.66,770.7Z"/>
+  <text id="_3" data-name="?!" class="cls-2" transform="translate(1196.102 696.589) rotate(-0.246) scale(0.567)">?!</text>
+</svg>
