@@ -49,3 +49,11 @@ main {
     text-transform: uppercase;
     cursor: pointer;
 }
+
+.answerBtn.correct {
+    background-color: green;
+}
+
+.answerBtn.incorrect {
+    background-color: red;
+}
