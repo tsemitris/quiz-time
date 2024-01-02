@@ -19,15 +19,13 @@ function showQuiz(): void {
 
 // Funktion som startar en timer när quizet startas
 
-let timerInterval: number | null;
 let seconds: number = 0;
 let minutes: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
 function startTimer(): void {
-  timerInterval = setInterval(updateTimer, 1000);
-  console.log(timerInterval);
+  setInterval(updateTimer, 1000);
 }
 
 function updateTimer(): void {
