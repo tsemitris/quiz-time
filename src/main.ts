@@ -37,7 +37,7 @@ if (answersContainer !== null && questionsContainer !== null) {
     answerBtn.className = 'answerBtn';
     answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
     answerBtn.addEventListener('click', handleAnswer);
-
+  
     answersContainer.appendChild(answerBtn);
   });
 
