@@ -14,9 +14,7 @@ function showQuiz(): void {
     quizSection?.classList.remove('hidden');
     startQuizBtn.style.display = 'none';
   }
-  
 }
-
 
 // Skapa en ny funktion 'getRandomQuestions' som ger en array med 10 random questions
 function getRandomQuestions(): IQuestion[] { 
@@ -25,7 +23,7 @@ function getRandomQuestions(): IQuestion[] {
   2. Välja ut 10 random frågor från questions (listan på 20 questions) och lägg till i listan
   3. Returnera listan
   */
-  let randomQuestions: IQuestion[] = [];
+  const randomQuestions: IQuestion[] = [];
   for (let i = 0; i < 10; i++) {
     const question = questions[Math.floor(Math.random() * questions.length)];
     randomQuestions.push(question); 
@@ -33,9 +31,63 @@ function getRandomQuestions(): IQuestion[] {
   return randomQuestions;
 }
 
-let randomQuestions = getRandomQuestions();
+const randomQuestions = getRandomQuestions();
 
 console.log(randomQuestions); 
+
+// FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG
+
+const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
+const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+
+if (answersContainer !== null && questionsContainer !== null) {
+  // Hämta första slumpmässiga frågan när sidan laddas
+  const currentQuestion = getRandomQuestion();
+
+  // Visa frågan i frågecontainern:
+  questionsContainer.textContent = currentQuestion.question;
+
+  // Skapa och lägg till knappar för varje svarsalternativ
+  currentQuestion.answers.forEach((answer: string) => {
+    const answerBtn = document.createElement('button');
+    answerBtn.textContent = answer;
+    answerBtn.className = 'answerBtn';
+    answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
+    answerBtn.addEventListener('click', handleAnswer);
+  
+    answersContainer.appendChild(answerBtn);
+  });
+
+  // Funktion som hanterar när användaren klickar på ett svartsalternativ:
+  function handleAnswer(event: Event): void {
+    const clickedBtn = event.currentTarget as HTMLButtonElement;
+    const isCorrect = clickedBtn.dataset.correct === 'true';
+
+    // Markera knapparna baserat på rätt eller fel svar
+    markAnswerButtons(isCorrect);
+  }
+
+  // Funktion som ändrar färgen på svarsknapparna baserat på rätt eller fel svar:
+  function markAnswerButtons(isCorrect: boolean): void {
+    const answerButtons = document.querySelectorAll('.answerBtn');
+    answerButtons.forEach((btn) => {
+      btn.classList.remove('correct', 'incorrect');
+      const correctAttribute = btn.getAttribute('data-correct');
+      if (correctAttribute === 'true') {
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('incorrect');
+      }
+      console.log(isCorrect);
+    });
+  }
+
+  // Funktion som hämtar en slumpmässig fråga från arrayen
+  function getRandomQuestion(): IQuestion {
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    return questions[randomIndex];
+  }
+}
 
 
 /**
