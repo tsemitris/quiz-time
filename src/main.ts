@@ -1,5 +1,5 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
-import {questions, IQuestions} from './questions.ts';
+import {questions, IQuestion} from './questions.ts';
 console.log(questions); // need to use questions. remove after implementing logic. 
 
 // FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
@@ -16,6 +16,26 @@ function showQuiz(): void {
   }
   
 }
+
+
+// Skapa en ny funktion 'getRandomQuestions' som ger en array med 10 random questions
+function getRandomQuestions(): IQuestion[] { 
+  /*
+  1. Definiera en tom lista av typ IQuestion[]
+  2. Välja ut 10 random frågor från questions (listan på 20 questions) och lägg till i listan
+  3. Returnera listan
+  */
+  let randomQuestions: IQuestion[] = [];
+  for (let i = 0; i < 10; i++) {
+    const question = questions[Math.floor(Math.random() * questions.length)];
+    randomQuestions.push(question); 
+  }
+  return randomQuestions;
+}
+
+let randomQuestions = getRandomQuestions();
+
+console.log(randomQuestions); 
 
 
 /**

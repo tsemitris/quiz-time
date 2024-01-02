@@ -108,6 +108,6 @@ const questions: IQuestion[] = [
 ];
 
 export {
-    questions,
-    IQuestion,
-}
+  questions,
+  type IQuestion,
+};
