@@ -16,17 +16,22 @@ function showQuiz(): void {
   }
 }
 
-// Skapa en ny funktion 'getRandomQuestions' som ger en array med 10 random questions
+// Function that returns an array with 10 random questions
 function getRandomQuestions(): IQuestion[] { 
-  /*
-  1. Definiera en tom lista av typ IQuestion[]
-  2. Välja ut 10 random frågor från questions (listan på 20 questions) och lägg till i listan
-  3. Returnera listan
-  */
+  // New empty array to contain the questions
   const randomQuestions: IQuestion[] = [];
-  for (let i = 0; i < 10; i++) {
+  
+  let noOfQuestions = 10;
+
+  while (noOfQuestions > 0) {
     const question = questions[Math.floor(Math.random() * questions.length)];
-    randomQuestions.push(question); 
+    // If random question already exits in the array, continue and try a new random question
+    if (randomQuestions.includes(question)) {
+      continue;
+    } else { // else add it to the array
+      randomQuestions.push(question);
+      noOfQuestions -= 1;
+    }
   }
   return randomQuestions;
 }
@@ -42,7 +47,12 @@ const questionsContainer: HTMLElement | null = document.querySelector('#question
 
 if (answersContainer !== null && questionsContainer !== null) {
   // Hämta första slumpmässiga frågan när sidan laddas
-  const currentQuestion = getRandomQuestion();
+  // Variable to know which question we are on - useful for next button and navigation
+  const currentQuestionIndex = 0;
+
+  // Get the current question by taking the question with the current question index
+  // from the array of random questions
+  const currentQuestion = randomQuestions[currentQuestionIndex];
 
   // Visa frågan i frågecontainern:
   questionsContainer.textContent = currentQuestion.question;
@@ -82,11 +92,6 @@ if (answersContainer !== null && questionsContainer !== null) {
     });
   }
 
-  // Funktion som hämtar en slumpmässig fråga från arrayen
-  function getRandomQuestion(): IQuestion {
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    return questions[randomIndex];
-  }
 }
 
 
