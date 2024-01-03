@@ -29,23 +29,23 @@ nextBtn?.addEventListener('click', showNextQuestion);
 
 // Funktion för att visa nästa fråga:
 function showNextQuestion(): void {
-  // rensa innehållet i svarscontainern för att förbereda för nya svarsknappar:
+  // Rensa innehållet i svarscontainern för att förbereda för nya svarsknappar:
   if (answersContainer !== null) {
     answersContainer.innerHTML = '';
   }
 
-  // hämta ny slumpmässig fråga:
+  // Hämta ny slumpmässig fråga:
   const currentQuestion = getRandomQuestion();
 
-  // uppdatera frågecontainern med den nya frågan:
+  // Uppdatera frågecontainern med den nya frågan:
   if (questionsContainer !== null) {
     questionsContainer.textContent = currentQuestion.question;
   }
 
-  // inaktivera nästaknappen innan svar har tryckts på 
+  // Inaktivera nästaknappen innan svar har tryckts på 
   nextBtn?.setAttribute('disabled', 'true');
 
-  // skapa och lägg till svarsknappar för varje svarsalternativ:
+  // Skapa och lägg till svarsknappar för varje svarsalternativ:
   currentQuestion.answers.forEach((answer: string) => {
     const answerBtn = document.createElement('button');
     answerBtn.textContent = answer;
@@ -53,7 +53,7 @@ function showNextQuestion(): void {
     answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
     answerBtn.addEventListener('click', handleAnswer);
 
-    // lägg till svarsknappen i svarscontainern:
+    // Lägg till svarsknappen i svarscontainern:
     if (answersContainer !== null) {
       answersContainer.appendChild(answerBtn);
     }
