@@ -1,6 +1,5 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
 import { questions, type IQuestion } from './questions.ts';
-console.log(questions); // need to use questions. remove after implementing logic. 
 
 // Funktion för knappen på förstasidan som öppnar upp quizet
 
@@ -25,7 +24,7 @@ och nästaknappen aktiveras vid klick på svarsknapp + ny slumpmässig fråga */
 function getRandomQuestions(): IQuestion[] { 
   // New empty array to contain the questions
   const randomQuestions: IQuestion[] = [];
-  
+
   let noOfQuestions = 10;
 
   while (noOfQuestions > 0) {
@@ -42,8 +41,8 @@ function getRandomQuestions(): IQuestion[] {
 }
 
 const randomQuestions = getRandomQuestions();
+// console.log(randomQuestions); 
 
-console.log(randomQuestions); 
 // Funktion som startar en timer när quizet startas
 
 let seconds: number = 0;
@@ -83,6 +82,7 @@ const questionsContainer: HTMLElement | null = document.querySelector('#question
 
 nextBtn?.addEventListener('click', showNextQuestion);
 
+let currentQuestionIndex = 0;
 // Funktion för att visa nästa fråga:
 function showNextQuestion(): void {
   // Rensa innehållet i svarscontainern för att förbereda för nya svarsknappar:
@@ -90,13 +90,9 @@ function showNextQuestion(): void {
     answersContainer.innerHTML = '';
   }
 
-  // Hämta ny slumpmässig fråga:
-  const currentQuestion = getRandomQuestions();
-
   if (answersContainer !== null && questionsContainer !== null) {
     // Hämta första slumpmässiga frågan när sidan laddas
     // Variable to know which question we are on - useful for next button and navigation
-    const currentQuestionIndex = 0;
   
     // Get the current question by taking the question with the current question index
     // from the array of random questions
@@ -124,6 +120,8 @@ function showNextQuestion(): void {
         answersContainer.appendChild(answerBtn);
       }
     });
+
+    currentQuestionIndex += 1;
   }
 }
 
