@@ -2,7 +2,7 @@ import './scss/style.scss'; // Importera huvud-SCSS-filen
 import {questions, IQuestion} from './questions.ts';
 console.log(questions); // need to use questions. remove after implementing logic. 
 
-// FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
+// Funktion för knappen på förstasidan som öppnar upp quizet
 
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
 const quizSection: HTMLElement | null = document.querySelector('#quizSection');
@@ -39,6 +39,36 @@ function getRandomQuestions(): IQuestion[] {
 const randomQuestions = getRandomQuestions();
 
 console.log(randomQuestions); 
+// Funktion som startar en timer när quizet startas
+
+let seconds: number = 0;
+let minutes: number = 0;
+
+startQuizBtn?.addEventListener('click', startTimer);
+
+function startTimer(): void {
+  setInterval(updateTimer, 1000);
+}
+
+function updateTimer(): void {
+  seconds += 1;
+
+  if (seconds === 60) {
+    seconds = 0;
+    minutes += 1;
+  }
+
+  const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
+  const timerElement: HTMLElement | null = document.querySelector('#timer');
+
+  if (timerElement !== null) {
+    timerElement.innerText = formattedTime;
+  }
+}
+
+function formattedNumber(number: number): string {
+  return (number < 10 ? '0' : '') + number;
+}
 
 // FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG
 

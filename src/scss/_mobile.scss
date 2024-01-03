@@ -50,6 +50,25 @@ main {
     cursor: pointer;
 }
 
+.timer-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    margin-top: 10px;
+    font-size: 0.7rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.clock-icon {
+    fill: white;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
 .answerBtn.correct {
     background-color: green;
 }

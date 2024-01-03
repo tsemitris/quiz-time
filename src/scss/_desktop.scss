@@ -14,3 +14,22 @@ main {
     height: 150px;
     font-size: 3rem;
 }
+
+.timer-container {
+    position: absolute;
+    display: flex;
+    align-items: end;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.clock-icon {
+    fill: #ffff;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
