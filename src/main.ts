@@ -1,5 +1,5 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
-import {questions, IQuestion} from './questions.ts';
+import { questions, type IQuestion } from './questions.ts';
 console.log(questions); // need to use questions. remove after implementing logic. 
 
 // Funktion för knappen på förstasidan som öppnar upp quizet
@@ -91,7 +91,7 @@ function showNextQuestion(): void {
   }
 
   // Hämta ny slumpmässig fråga:
-  const currentQuestion = getRandomQuestion();
+  const currentQuestion = getRandomQuestions();
 
   if (answersContainer !== null && questionsContainer !== null) {
     // Hämta första slumpmässiga frågan när sidan laddas
