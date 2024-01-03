@@ -1,8 +1,8 @@
 interface IQuestion {
-    question: string;
-    answers: string[];
-    correctAnswer: string;
-  }
+  question: string;
+  answers: string[];
+  correctAnswer: string;
+}
 
 const questions: IQuestion[] = [
   {
