@@ -1,4 +1,4 @@
-interface IQuestions {
+export interface IQuestions {
     question: string;
     answers: string[];
     correctAnswer: string;

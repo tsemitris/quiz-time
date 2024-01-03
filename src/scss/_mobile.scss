@@ -69,3 +69,10 @@ main {
     margin-right: 5px;
 }
 
+.answerBtn.correct {
+    background-color: green;
+}
+
+.answerBtn.incorrect {
+    background-color: red;
+}
