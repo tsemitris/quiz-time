@@ -6,6 +6,7 @@ console.log(questions); // need to use questions. remove after implementing logi
 
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
 const quizSection: HTMLElement | null = document.querySelector('#quizSection');
+const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
 
 startQuizBtn?.addEventListener('click', showQuiz);
 
@@ -13,8 +14,12 @@ function showQuiz(): void {
   if (startQuizBtn != null) {
     quizSection?.classList.remove('hidden');
     startQuizBtn.style.display = 'none';
+    showNextQuestion(); // Visa första frågan när quizet startas
   }
 }
+
+/* FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG 
+och nästaknappen aktiveras vid klick på svarsknapp + ny slumpmässig fråga */
 
 // Function that returns an array with 10 random questions
 function getRandomQuestions(): IQuestion[] { 
@@ -72,8 +77,21 @@ function formattedNumber(number: number): string {
 
 // FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG
 
+
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+
+nextBtn?.addEventListener('click', showNextQuestion);
+
+// Funktion för att visa nästa fråga:
+function showNextQuestion(): void {
+  // Rensa innehållet i svarscontainern för att förbereda för nya svarsknappar:
+  if (answersContainer !== null) {
+    answersContainer.innerHTML = '';
+  }
+
+  // Hämta ny slumpmässig fråga:
+  const currentQuestion = getRandomQuestion();
 
 if (answersContainer !== null && questionsContainer !== null) {
   // Hämta första slumpmässiga frågan när sidan laddas
@@ -84,45 +102,57 @@ if (answersContainer !== null && questionsContainer !== null) {
   // from the array of random questions
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-  // Visa frågan i frågecontainern:
-  questionsContainer.textContent = currentQuestion.question;
 
-  // Skapa och lägg till knappar för varje svarsalternativ
+  // Uppdatera frågecontainern med den nya frågan:
+  if (questionsContainer !== null) {
+    questionsContainer.textContent = currentQuestion.question;
+  }
+
+  // Inaktivera nästaknappen innan svar har tryckts på 
+  nextBtn?.setAttribute('disabled', 'true');
+
+  // Skapa och lägg till svarsknappar för varje svarsalternativ:
   currentQuestion.answers.forEach((answer: string) => {
     const answerBtn = document.createElement('button');
     answerBtn.textContent = answer;
     answerBtn.className = 'answerBtn';
     answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
     answerBtn.addEventListener('click', handleAnswer);
-  
-    answersContainer.appendChild(answerBtn);
+
+    // Lägg till svarsknappen i svarscontainern:
+    if (answersContainer !== null) {
+      answersContainer.appendChild(answerBtn);
+    }
   });
-
-  // Funktion som hanterar när användaren klickar på ett svartsalternativ:
-  function handleAnswer(event: Event): void {
-    const clickedBtn = event.currentTarget as HTMLButtonElement;
-    const isCorrect = clickedBtn.dataset.correct === 'true';
-
-    // Markera knapparna baserat på rätt eller fel svar
-    markAnswerButtons(isCorrect);
-  }
-
-  // Funktion som ändrar färgen på svarsknapparna baserat på rätt eller fel svar:
-  function markAnswerButtons(isCorrect: boolean): void {
-    const answerButtons = document.querySelectorAll('.answerBtn');
-    answerButtons.forEach((btn) => {
-      btn.classList.remove('correct', 'incorrect');
-      const correctAttribute = btn.getAttribute('data-correct');
-      if (correctAttribute === 'true') {
-        btn.classList.add('correct');
-      } else {
-        btn.classList.add('incorrect');
-      }
-      console.log(isCorrect);
-    });
-  }
-
 }
+
+// Funktion som hanterar när användaren klickar på ett svartsalternativ:
+function handleAnswer(event: Event): void {
+  const clickedBtn = event.currentTarget as HTMLButtonElement;
+  const isCorrect = clickedBtn.dataset.correct === 'true';
+
+  // Markera knapparna baserat på rätt eller fel svar
+  markAnswerButtons(isCorrect);
+}
+
+// Funktion som ändrar färgen på svarsknapparna baserat på rätt eller fel svar:
+function markAnswerButtons(isCorrect: boolean): void {
+  const answerButtons = document.querySelectorAll('.answerBtn');
+  answerButtons.forEach((btn) => {
+    btn.classList.remove('correct', 'incorrect');
+    const correctAttribute = btn.getAttribute('data-correct');
+    if (correctAttribute === 'true') {
+      btn.classList.add('correct');
+      nextBtn?.removeAttribute('disabled');
+    } else {
+      btn.classList.add('incorrect');
+      nextBtn?.removeAttribute('disabled');
+    }
+    console.log(isCorrect);
+  });
+}
+
+
 
 
 /**
