@@ -1,9 +1,8 @@
 import './scss/style.scss'; // Importera huvud-SCSS-filen
-import type { IQuestions } from './questions.ts';
-import questions from './questions.ts';
+import {questions, IQuestion} from './questions.ts';
 console.log(questions); // need to use questions. remove after implementing logic. 
 
-// FUNKTION FÖR KNAPPEN PÅ FÖRSTASIDAN SOM GÖR ATT QUIZET ÖPPNAS NÄR MAN KLICKAR PÅ DEN
+// Funktion för knappen på förstasidan som öppnar upp quizet
 
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
 const quizSection: HTMLElement | null = document.querySelector('#quizSection');
@@ -22,6 +21,63 @@ function showQuiz(): void {
 /* FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG 
 och nästaknappen aktiveras vid klick på svarsknapp + ny slumpmässig fråga */
 
+// Function that returns an array with 10 random questions
+function getRandomQuestions(): IQuestion[] { 
+  // New empty array to contain the questions
+  const randomQuestions: IQuestion[] = [];
+  
+  let noOfQuestions = 10;
+
+  while (noOfQuestions > 0) {
+    const question = questions[Math.floor(Math.random() * questions.length)];
+    // If random question already exits in the array, continue and try a new random question
+    if (randomQuestions.includes(question)) {
+      continue;
+    } else { // else add it to the array
+      randomQuestions.push(question);
+      noOfQuestions -= 1;
+    }
+  }
+  return randomQuestions;
+}
+
+const randomQuestions = getRandomQuestions();
+
+console.log(randomQuestions); 
+// Funktion som startar en timer när quizet startas
+
+let seconds: number = 0;
+let minutes: number = 0;
+
+startQuizBtn?.addEventListener('click', startTimer);
+
+function startTimer(): void {
+  setInterval(updateTimer, 1000);
+}
+
+function updateTimer(): void {
+  seconds += 1;
+
+  if (seconds === 60) {
+    seconds = 0;
+    minutes += 1;
+  }
+
+  const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
+  const timerElement: HTMLElement | null = document.querySelector('#timer');
+
+  if (timerElement !== null) {
+    timerElement.innerText = formattedTime;
+  }
+}
+
+function formattedNumber(number: number): string {
+  return (number < 10 ? '0' : '') + number;
+}
+
+// FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG
+
+
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
 
@@ -36,6 +92,16 @@ function showNextQuestion(): void {
 
   // Hämta ny slumpmässig fråga:
   const currentQuestion = getRandomQuestion();
+
+if (answersContainer !== null && questionsContainer !== null) {
+  // Hämta första slumpmässiga frågan när sidan laddas
+  // Variable to know which question we are on - useful for next button and navigation
+  const currentQuestionIndex = 0;
+
+  // Get the current question by taking the question with the current question index
+  // from the array of random questions
+  const currentQuestion = randomQuestions[currentQuestionIndex];
+
 
   // Uppdatera frågecontainern med den nya frågan:
   if (questionsContainer !== null) {
@@ -86,11 +152,6 @@ function markAnswerButtons(isCorrect: boolean): void {
   });
 }
 
-// Funktion som hämtar en slumpmässig fråga från arrayen
-function getRandomQuestion(): IQuestions {
-  const randomIndex = Math.floor(Math.random() * questions.length);
-  return questions[randomIndex];
-}
 
 
 
