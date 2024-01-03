@@ -93,37 +93,38 @@ function showNextQuestion(): void {
   // Hämta ny slumpmässig fråga:
   const currentQuestion = getRandomQuestion();
 
-if (answersContainer !== null && questionsContainer !== null) {
-  // Hämta första slumpmässiga frågan när sidan laddas
-  // Variable to know which question we are on - useful for next button and navigation
-  const currentQuestionIndex = 0;
-
-  // Get the current question by taking the question with the current question index
-  // from the array of random questions
-  const currentQuestion = randomQuestions[currentQuestionIndex];
-
-
-  // Uppdatera frågecontainern med den nya frågan:
-  if (questionsContainer !== null) {
-    questionsContainer.textContent = currentQuestion.question;
-  }
-
-  // Inaktivera nästaknappen innan svar har tryckts på 
-  nextBtn?.setAttribute('disabled', 'true');
-
-  // Skapa och lägg till svarsknappar för varje svarsalternativ:
-  currentQuestion.answers.forEach((answer: string) => {
-    const answerBtn = document.createElement('button');
-    answerBtn.textContent = answer;
-    answerBtn.className = 'answerBtn';
-    answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
-    answerBtn.addEventListener('click', handleAnswer);
-
-    // Lägg till svarsknappen i svarscontainern:
-    if (answersContainer !== null) {
-      answersContainer.appendChild(answerBtn);
+  if (answersContainer !== null && questionsContainer !== null) {
+    // Hämta första slumpmässiga frågan när sidan laddas
+    // Variable to know which question we are on - useful for next button and navigation
+    const currentQuestionIndex = 0;
+  
+    // Get the current question by taking the question with the current question index
+    // from the array of random questions
+    const currentQuestion = randomQuestions[currentQuestionIndex];
+  
+  
+    // Uppdatera frågecontainern med den nya frågan:
+    if (questionsContainer !== null) {
+      questionsContainer.textContent = currentQuestion.question;
     }
-  });
+  
+    // Inaktivera nästaknappen innan svar har tryckts på 
+    nextBtn?.setAttribute('disabled', 'true');
+  
+    // Skapa och lägg till svarsknappar för varje svarsalternativ:
+    currentQuestion.answers.forEach((answer: string) => {
+      const answerBtn = document.createElement('button');
+      answerBtn.textContent = answer;
+      answerBtn.className = 'answerBtn';
+      answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
+      answerBtn.addEventListener('click', handleAnswer);
+  
+      // Lägg till svarsknappen i svarscontainern:
+      if (answersContainer !== null) {
+        answersContainer.appendChild(answerBtn);
+      }
+    });
+  }
 }
 
 // Funktion som hanterar när användaren klickar på ett svartsalternativ:
