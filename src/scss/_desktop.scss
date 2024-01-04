@@ -12,19 +12,18 @@
     --body-gradient-start-color: #FFFFFF;
     --body-gradient-end-color: #DBDBDB;
 
-    // Background shape(s)
-
     // Empty box(es)
     --empty-boxes: #BFBFBF;
 
     // Info box
     --info-container: #FFFFFF;
     --head-title-font-size: 3rem;
+    --head-title-small-font-size: 2rem;
     --under-text-font-size: 1rem;
+    --under-text-small-font-size: .9rem;
     --start-quiz-button-gradient-start-color: #815AC0;
     --start-quiz-button-gradient-end-color: #59409C;
     --start-quiz-arrow-color: white;
-
 }
 
 
@@ -175,7 +174,7 @@ main {
         width: 0vw;
     }
 
-    .main-page {
+    .home-page {
         @include gridCreation(column, 12, 1fr, 20px);
         overflow: hidden;
         
@@ -235,28 +234,46 @@ main {
             grid-column: 5 / span 4; 
             height: 277px;
             border-radius: 17px;
-            margin: 73px 0 0 0;
+            margin: 73px 0;
             padding: 20px;
             position: relative;
             @include centerText(center, center);
             flex-direction: column;
             animation: bottomToCurrentPosition 1s ease-in-out 0s 1;
 
-
             .head-title {
-                font-size: var(--head-title-font-size);
                 font-weight: 500;
                 margin: 0;
                 text-align: center;
+                padding: 0 7%;
             }
-
-            .under-text {
-                font-size: var(--under-text-font-size);
+            .under-text { 
                 opacity: 80%;
                 font-weight: 300;
                 text-align: center;
-                padding: 0 106px;
+                padding: 0 20%;
             }
+            
+            @media screen and (min-width: 1025px) and (max-width: 1453px) { 
+                .head-title {
+                    font-size: var(--head-title-small-font-size);
+                }
+    
+                .under-text {
+                    font-size: var(--under-text-small-font-size);
+                }
+            }
+            
+            @media screen and (min-width: 1454px) {
+                .head-title {
+                    font-size: var(--head-title-font-size);
+                }
+    
+                .under-text {
+                    font-size: var(--under-text-font-size);
+                }
+            }
+
 
             .start-quiz-button {
                 @include buttonReset(none, 10px, none, none, none);
@@ -272,11 +289,11 @@ main {
                     opacity: .9;
 
                     .arrow-icon {
-                        .startQuizArrow1 {
+                        .start-quiz-arrow-1 {
                             transform: translateX(100%);
                             transition: transform 1s cubic-bezier(.32,.66,.86,.25) 0s;
                         }
-                        .startQuizArrow2 {
+                        .start-quiz-arrow-2 {
                             transform: translateX(80%);
                             transition: transform 1s cubic-bezier(.32,.66,.86,.25) 0s;
                         }
@@ -288,10 +305,10 @@ main {
                     transform: scale(1.3);
                     border-radius: 50%;
                     
-                    .startQuizArrow1 {
+                    .start-quiz-arrow-1 {
                         transition: transform 1s cubic-bezier(.32,.66,.86,.25) 0s;
                     }
-                    .startQuizArrow2 {
+                    .start-quiz-arrow-2 {
                         transform: translateX(-10%);
                         transition: transform 1s cubic-bezier(.32,.66,.86,.25) 0s;
                     }
@@ -302,7 +319,8 @@ main {
         // Main page background
         .background-shapes {
             grid-row: 1 / span 3;
-            height: 100vh;
+            min-height: 100vh;
+            max-height: max-content;
             z-index: -1;
             position: relative;
 
