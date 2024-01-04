@@ -153,7 +153,6 @@ function stopTimer(): void {
 
 // Function that handles when the user clicks on an answer option
 function handleAnswer(event: Event): void {
-  const scoreContainer: HTMLElement | null = document.querySelector('#scoreDisplay');
   const clickedBtn = event.currentTarget as HTMLButtonElement;
   const isCorrect = clickedBtn.dataset.correct === 'true';
   // Updates score with 5 points if answer is correct
