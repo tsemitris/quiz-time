@@ -1,4 +1,4 @@
-import './scss/style.scss'; // Importera huvud-SCSS-filen
+import './scss/style.scss'; // Import SCSS
 import { questions, type IQuestion } from './questions.ts';
 
 // - - - - - - - - - - - - - - - - - VARIABLES - - - - - - - - - - - - - - - - -
@@ -45,7 +45,6 @@ function showQuiz(): void {
     quizPage?.classList.toggle('hidden');
     showNextQuestion(); // Show the first question when the quiz starts
   }
-  
 }
 
 /** - - - - - - - - - - - - - - - FETCH QUESTIONS - - - - - - - - - - - - - -
@@ -71,6 +70,7 @@ function getRandomQuestions(): IQuestion[] {
 }
 
 const randomQuestions = getRandomQuestions();
+
 
 
 // - - - - - - - - - - - - - - - - QUIZ TIMER - - - - - - - - - - - - - - - -
@@ -238,10 +238,6 @@ function displayFinalResults(): void {
     scoreContainer.classList.add('hidden');
   }
 }
-
-
-
-
 
 
 
