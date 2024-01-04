@@ -12,6 +12,7 @@
 
 ## Vilket språkbruk ni har
 - Agera med respekt gentemot varandra, ge konstruktiv feedback, EJ PEKA UT NÅGON.
+- Commits och kommentarer i VSCode skrivs på engelska
 
 ## Vad är ambitionsnivån
 - Ambitionsnivån är att klara uppgiften och lära sig TypeScript.
@@ -33,7 +34,7 @@
 - Vi ska sätta upp veckomål som vi sedan följer upp.
 - Vecka 1: Sätta upp en Miro board, wireframes, börja med CSS och gör grunden. Skapa questions-fil, lägga upp frågorna manuellt i en array, object. Börja med funktioner. Göra page 1: starta quiz. 
 - Vecka 2: TBA
-- Vecka 3: TBA
+- Vecka 3: TBA - UPDATE: vi börjar med halvveckorssprint från 3 jan. 
 - Vecka 4: TBA
 
 - Vi hjälper till när någon ligger efter. Viktigt att kommunicera och hålla varandra uppdaterade. 
