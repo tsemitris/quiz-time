@@ -170,6 +170,7 @@ function handleAnswer(event: Event): void {
   }
 }
 
+// Function to display final results
 function displayFinalResults(): void {
   const finalScoreElement: HTMLElement | null = document.querySelector('#finalScore');
   const finalTimeElement: HTMLElement | null = document.querySelector('#finalTime');
