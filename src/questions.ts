@@ -1,10 +1,10 @@
-interface IQuestions {
-    question: string;
-    answers: string[];
-    correctAnswer: string;
-  }
+interface IQuestion {
+  question: string;
+  answers: string[];
+  correctAnswer: string;
+}
 
-const questions: IQuestions[] = [
+const questions: IQuestion[] = [
   {
     question: 'Which of these companies does NOT manufacture automobiles?',
     answers: ['Nissan', 'Fiat', 'Ducati'],
@@ -106,4 +106,8 @@ const questions: IQuestions[] = [
     correctAnswer: 'Bobby Henderson',
   },
 ];
-export default questions;
+
+export {
+  questions,
+  type IQuestion,
+};
