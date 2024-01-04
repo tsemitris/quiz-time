@@ -24,8 +24,8 @@
 
 <body>
   <main>
-    <section id="mainPage" class="main-page"> 
-      <!-- Container with empty boxes -->
+    <section id="homePage" class="home-page"> 
+      <!-- Empty boxes -->
       <div class="boxes-container">
         <div class="upper-container">
           <div class="box"></div>
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-
+      <!-- Info box -->
       <article class="main-info-container">
         <h2 class="head-title">An engaging quiz is ready for you</h2>
         <p class="under-text">Test your knowledge, challenge yourself, and discover something new!</p>
@@ -53,13 +53,12 @@
           width="64"
           height="64"
           viewBox="0 0 67 64">
-          <path class="startQuizArrow1" d="M45.1552 34.6667L29.5219 49.6L33.5 53.3334L55.8334 32L33.5 10.6667L29.5219 14.4L45.1552 29.3334H11.1667V34.6667H45.1552Z"/>
-          <path class="startQuizArrow2" d="M-9.77244 34L-25.0558 48.9333L-21.1667 52.6667L0.666626 31.3333L-21.1667 10L-25.0558 13.7333L-9.77244 28.6667H-43V34H-9.77244Z" />
-        </svg>
-          
+          <path class="start-quiz-arrow-1" d="M45.1552 34.6667L29.5219 49.6L33.5 53.3334L55.8334 32L33.5 10.6667L29.5219 14.4L45.1552 29.3334H11.1667V34.6667H45.1552Z"/>
+          <path class="start-quiz-arrow-2" d="M-9.77244 34L-25.0558 48.9333L-21.1667 52.6667L0.666626 31.3333L-21.1667 10L-25.0558 13.7333L-9.77244 28.6667H-43V34H-9.77244Z" />
+        </svg>    
       </article>
       
-      <!-- Main page background -->
+      <!-- Background -->
       <div class="background-shapes">
         <!-- Custom shapes -->
         <svg class="shapes custom-shape-1" width="618" height="608" viewBox="0 0 618 608" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +146,24 @@
 
     <!-- FIXME overflow conflict  -->
     <section id="quizPage" class="quiz-page hidden">
-      <h1>🚧 Under development</h1>
+      <!-- <h1>🚧 Under development</h1> -->
+      <div id="scoreDisplay" class="score-display">Score: 0</div>
+        <div id="timerContainer" class="timer-container">
+          <svg class="clock-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+          <path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+          <span id="timer" class="timer">
+            00:00
+          </span>
+          <div id="questionsContainer"></div>
+          <div id="answersContainer"></div>
+          <button id="nextBtn" class="next-button hidden" disabled>Next</button>
+        </div>
+        <div id="resultsContainer" class="results-container hidden">
+          <h2>Thanks for playing!</h2>
+          <div id="finalScore" class="final-score"></div>
+          <div id="finalTime" class="final-time"></div>
+          <button id="restartQuizBtn" class="restart-quiz-btn">Play again!</button>
+      </div>
     </section>
   </main>
 
