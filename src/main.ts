@@ -7,6 +7,16 @@ const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
 
+// Function to update score display
+let score = 0;
+
+function updateScoreDisplay(): void {
+  const scoreDisplay: HTMLElement | null = document.querySelector('#scoreDisplay');
+  if (scoreDisplay !== null) {
+    scoreDisplay.textContent = `Score: ${score}`; // Update the text content with the current score
+  }
+}
+
 // Function for the button on the home page that opens the quiz
 
 startQuizBtn?.addEventListener('click', showQuiz);
@@ -132,6 +142,11 @@ function showNextQuestion(): void {
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
   const isCorrect = clickedBtn.dataset.correct === 'true';
+  // Updates score with 5 points if answer is correct
+  if (isCorrect) {
+    score += 5;
+    updateScoreDisplay();
+  }
   // Mark the buttons based on whether the answer is correct or incorrect
   markAnswerButtons(isCorrect);
 }
