@@ -6,6 +6,16 @@ const quizSection: HTMLElement | null = document.querySelector('#quizSection');
 const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
+console.log(counterDisplay); // REMOVE!
+
+// Function to update question counter display
+
+function updateCounterDisplay(): void {
+  if (counterDisplay !== null) {
+    counterDisplay.innerHTML = currentQuestionIndex.toString() + '/' + totalQuestions; 
+  }
+}
 
 // Function to update score display
 let score = 0;
@@ -136,6 +146,9 @@ function showNextQuestion(): void {
       // Hide the next button when all questions are answered
       nextBtn?.classList.add('hidden');
     }
+
+    updateCounterDisplay();
+
   }
 }
 
