@@ -45,13 +45,14 @@ const randomQuestions = getRandomQuestions();
 
 // Function that starts a timer when the quiz starts
 
+let timerInterval: number;
 let seconds: number = 0;
 let minutes: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
 function startTimer(): void {
-  setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer(): void {
@@ -125,7 +126,20 @@ function showNextQuestion(): void {
       // Hide the next button when all questions are answered
       nextBtn?.classList.add('hidden');
     }
+
   }
+}
+
+// Function that stops the time when the player have answered the last question
+// and also saves the time in a variable called 'finalTime'
+
+function stopTimer(): void {
+  clearInterval(timerInterval);
+
+  const finalTime = minutes + ':' + formattedNumber(seconds);
+
+  // Shows the final time:
+  console.log('Your final time:', finalTime);
 }
 
 // Function that handles when the user clicks on an answer option
@@ -134,6 +148,11 @@ function handleAnswer(event: Event): void {
   const isCorrect = clickedBtn.dataset.correct === 'true';
   // Mark the buttons based on whether the answer is correct or incorrect
   markAnswerButtons(isCorrect);
+
+  // If the player has answered the last question, the stopTimer function will be activated
+  if (currentQuestionIndex === randomQuestions.length) {
+    stopTimer();
+  }
 }
 
 // Function that changes the color of the answer buttons based on whether the answer is correct or incorrect
