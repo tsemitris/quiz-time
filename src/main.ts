@@ -190,7 +190,7 @@ function displayFinalResults(): void {
     resultsContainer.classList.remove('hidden');
   }
 
-  if (resultsContainer !== null) {
+  if (scoreContainer !== null) {
     scoreContainer.classList.add('hidden');
   }
 }
