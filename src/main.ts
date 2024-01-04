@@ -1,11 +1,23 @@
-import './scss/style.scss'; // Importera huvud-SCSS-filen
+import './scss/style.scss'; // Import SCSS
 import { questions, type IQuestion } from './questions.ts';
-
-// Funktion för knappen på förstasidan som öppnar upp quizet
 
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
 const quizSection: HTMLElement | null = document.querySelector('#quizSection');
 const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
+const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
+const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+
+// Function to update score display
+let score = 0;
+
+function updateScoreDisplay(): void {
+  const scoreDisplay: HTMLElement | null = document.querySelector('#scoreDisplay');
+  if (scoreDisplay !== null) {
+    scoreDisplay.textContent = `Score: ${score}`; // Update the text content with the current score
+  }
+}
+
+// Function for the button on the home page that opens the quiz
 
 startQuizBtn?.addEventListener('click', showQuiz);
 
@@ -13,14 +25,12 @@ function showQuiz(): void {
   if (startQuizBtn != null) {
     quizSection?.classList.remove('hidden');
     startQuizBtn.style.display = 'none';
-    showNextQuestion(); // Visa första frågan när quizet startas
+    showNextQuestion(); // Show the first question when the quiz starts
   }
 }
 
-/* FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG 
-och nästaknappen aktiveras vid klick på svarsknapp + ny slumpmässig fråga */
-
 // Function that returns an array with 10 random questions
+
 function getRandomQuestions(): IQuestion[] { 
   // New empty array to contain the questions
   const randomQuestions: IQuestion[] = [];
@@ -29,7 +39,7 @@ function getRandomQuestions(): IQuestion[] {
 
   while (noOfQuestions > 0) {
     const question = questions[Math.floor(Math.random() * questions.length)];
-    // If random question already exits in the array, continue and try a new random question
+    // If random question already exists in the array, continue and try a new random question
     if (randomQuestions.includes(question)) {
       continue;
     } else { // else add it to the array
@@ -43,15 +53,16 @@ function getRandomQuestions(): IQuestion[] {
 const randomQuestions = getRandomQuestions();
 // console.log(randomQuestions); 
 
-// Funktion som startar en timer när quizet startas
+// Function that starts a timer when the quiz starts
 
+let timerInterval: number;
 let seconds: number = 0;
 let minutes: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
 function startTimer(): void {
-  setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer(): void {
@@ -74,24 +85,20 @@ function formattedNumber(number: number): string {
   return (number < 10 ? '0' : '') + number;
 }
 
-// FUNKTION FÖR ATT SVARSKNAPPARNA SKA ÄNDRA FÄRG
-
-
-const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
-const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+// Function to show the next question
 
 nextBtn?.addEventListener('click', showNextQuestion);
 
 let currentQuestionIndex = 0;
-// Funktion för att visa nästa fråga:
+const totalQuestions = 10;
+
 function showNextQuestion(): void {
-  // Rensa innehållet i svarscontainern för att förbereda för nya svarsknappar:
+  // Clear the content of the answer container to prepare for a new answer buttons
   if (answersContainer !== null) {
     answersContainer.innerHTML = '';
   }
 
   if (answersContainer !== null && questionsContainer !== null) {
-    // Hämta första slumpmässiga frågan när sidan laddas
     // Variable to know which question we are on - useful for next button and navigation
   
     // Get the current question by taking the question with the current question index
@@ -99,15 +106,17 @@ function showNextQuestion(): void {
     const currentQuestion = randomQuestions[currentQuestionIndex];
   
   
-    // Uppdatera frågecontainern med den nya frågan:
+    // Update the question container with the new question
     if (questionsContainer !== null) {
       questionsContainer.textContent = currentQuestion.question;
     }
   
-    // Inaktivera nästaknappen innan svar har tryckts på 
+    // Disable the next button until answer is clicked
     nextBtn?.setAttribute('disabled', 'true');
+    // Show next button before all questions been answered
+    nextBtn?.classList.remove('hidden');
   
-    // Skapa och lägg till svarsknappar för varje svarsalternativ:
+    // Create and add answer buttons for each answer option
     currentQuestion.answers.forEach((answer: string) => {
       const answerBtn = document.createElement('button');
       answerBtn.textContent = answer;
@@ -115,26 +124,53 @@ function showNextQuestion(): void {
       answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
       answerBtn.addEventListener('click', handleAnswer);
   
-      // Lägg till svarsknappen i svarscontainern:
+      // Add the answer button to the answer container
       if (answersContainer !== null) {
         answersContainer.appendChild(answerBtn);
       }
     });
-
     currentQuestionIndex += 1;
+
+    // Check if all questions are answered
+    if (currentQuestionIndex === totalQuestions) {
+      // Hide the next button when all questions are answered
+      nextBtn?.classList.add('hidden');
+    }
+
   }
 }
 
-// Funktion som hanterar när användaren klickar på ett svartsalternativ:
+// Function that stops the time when the player have answered the last question
+// and also saves the time in a variable called 'finalTime'
+
+function stopTimer(): void {
+  clearInterval(timerInterval);
+
+  const finalTime = minutes + ':' + formattedNumber(seconds);
+
+  // Shows the final time:
+  console.log('Your final time:', finalTime);
+}
+
+// Function that handles when the user clicks on an answer option
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
   const isCorrect = clickedBtn.dataset.correct === 'true';
-
-  // Markera knapparna baserat på rätt eller fel svar
+  // Updates score with 5 points if answer is correct
+  if (isCorrect) {
+    score += 5;
+    updateScoreDisplay();
+  }
+  // Mark the buttons based on whether the answer is correct or incorrect
   markAnswerButtons(isCorrect);
+
+  // If the player has answered the last question, the stopTimer function will be activated
+  if (currentQuestionIndex === randomQuestions.length) {
+    stopTimer();
+  }
 }
 
-// Funktion som ändrar färgen på svarsknapparna baserat på rätt eller fel svar:
+// Function that changes the color of the answer buttons based on whether the answer is correct or incorrect
 function markAnswerButtons(isCorrect: boolean): void {
   const answerButtons = document.querySelectorAll('.answerBtn');
   answerButtons.forEach((btn) => {
