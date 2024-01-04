@@ -136,7 +136,6 @@ function showNextQuestion(): void {
       // Hide the next button when all questions are answered
       nextBtn?.classList.add('hidden');
     }
-
   }
 }
 
@@ -167,6 +166,32 @@ function handleAnswer(event: Event): void {
   // If the player has answered the last question, the stopTimer function will be activated
   if (currentQuestionIndex === randomQuestions.length) {
     stopTimer();
+    displayFinalResults();
+  }
+}
+
+// Function to display final results
+function displayFinalResults(): void {
+  const finalScoreElement: HTMLElement | null = document.querySelector('#finalScore');
+  const finalTimeElement: HTMLElement | null = document.querySelector('#finalTime');
+  const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
+  const scoreContainer: HTMLElement | null = document.querySelector('#scoreDisplay');
+
+  if (finalScoreElement !== null) {
+    finalScoreElement.textContent = `Final Score: ${score}`;
+  }
+
+  if (finalTimeElement !== null) {
+    const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
+    finalTimeElement.textContent = `Time Taken: ${formattedTime}`;
+  }
+
+  if (resultsContainer !== null) {
+    resultsContainer.classList.remove('hidden');
+  }
+
+  if (resultsContainer !== null) {
+    scoreContainer.classList.add('hidden');
   }
 }
 
