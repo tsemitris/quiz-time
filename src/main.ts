@@ -1,4 +1,4 @@
-import './scss/style.scss'; // Import SCSS
+import './scss/style.scss';
 import { questions, type IQuestion } from './questions.ts';
 
 // - - - - - - - - - - - - - - - - - VARIABLES - - - - - - - - - - - - - - - - -
@@ -16,7 +16,7 @@ const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
 const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
 
 /** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
- * Function to update question counter display
+ * Update question counter display
 */
 function updateCounterDisplay(): void {
   if (counterDisplay !== null) {
@@ -25,7 +25,7 @@ function updateCounterDisplay(): void {
 }
 
 /** - - - - - - - - - - - - - - UPDATE SCORE DISPLAY - - - - - - - - - - - - - -
- * Function to update score display
+ * Update score display
 */
 let score = 0;
 
@@ -105,7 +105,7 @@ function formattedNumber(number: number): string {
 }
 
 /** - - - - - - - - - - - - - NEXT QUESTION BUTTON - - - - - - - - - - - - -
- * Function to show the next question
+ * Show the next question
 */
 nextBtn?.addEventListener('click', showNextQuestion);
 
