@@ -1,23 +1,32 @@
-import './scss/style.scss'; // Import SCSS
+import './scss/style.scss';
 import { questions, type IQuestion } from './questions.ts';
 
+// - - - - - - - - - - - - - - - - - VARIABLES - - - - - - - - - - - - - - - - -
+// Home page
+const homePage: HTMLElement | null = document.querySelector('#homePage');
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
-const quizSection: HTMLElement | null = document.querySelector('#quizSection');
-const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
-const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
+
+// Quiz page
+const quizPage: HTMLElement | null = document.querySelector('#quizPage');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
+const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
+const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
+
+// Results popup
 const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
-console.log(counterDisplay); // REMOVE!
 
-// Function to update question counter display
-
+/** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
+ * Update question counter display
+*/
 function updateCounterDisplay(): void {
   if (counterDisplay !== null) {
     counterDisplay.innerHTML = currentQuestionIndex.toString() + '/' + totalQuestions; 
   }
 }
 
-// Function to update score display
+/** - - - - - - - - - - - - - - UPDATE SCORE DISPLAY - - - - - - - - - - - - - -
+ * Update score display
+*/
 let score = 0;
 
 function updateScoreDisplay(): void {
@@ -27,20 +36,20 @@ function updateScoreDisplay(): void {
   }
 }
 
-// Function for the button on the home page that opens the quiz
-
+// - - - - - - - - - - - - - - - START QUIZ BUTTON - - - - - - - - - - - - - -
 startQuizBtn?.addEventListener('click', showQuiz);
 
 function showQuiz(): void {
   if (startQuizBtn != null) {
-    quizSection?.classList.remove('hidden');
-    startQuizBtn.style.display = 'none';
+    homePage?.classList.toggle('hidden');
+    quizPage?.classList.toggle('hidden');
     showNextQuestion(); // Show the first question when the quiz starts
   }
 }
 
-// Function that returns an array with 10 random questions
-
+/** - - - - - - - - - - - - - - - FETCH QUESTIONS - - - - - - - - - - - - - -
+ * @return an array with 10 random questions
+*/
 function getRandomQuestions(): IQuestion[] { 
   // New empty array to contain the questions
   const randomQuestions: IQuestion[] = [];
@@ -61,10 +70,10 @@ function getRandomQuestions(): IQuestion[] {
 }
 
 const randomQuestions = getRandomQuestions();
-// console.log(randomQuestions); 
 
-// Function that starts a timer when the quiz starts
 
+
+// - - - - - - - - - - - - - - - - QUIZ TIMER - - - - - - - - - - - - - - - -
 let timerInterval: number;
 let seconds: number = 0;
 let minutes: number = 0;
@@ -95,8 +104,9 @@ function formattedNumber(number: number): string {
   return (number < 10 ? '0' : '') + number;
 }
 
-// Function to show the next question
-
+/** - - - - - - - - - - - - - NEXT QUESTION BUTTON - - - - - - - - - - - - -
+ * Show the next question
+*/
 nextBtn?.addEventListener('click', showNextQuestion);
 
 let currentQuestionIndex = 0;
@@ -148,26 +158,25 @@ function showNextQuestion(): void {
     }
 
     updateCounterDisplay();
-
+  
   }
 }
 
-// Function that stops the time when the player have answered the last question
-// and also saves the time in a variable called 'finalTime'
-
+/** - - - - - - - - - - - - - ON LAST QUESTION - - - - - - - - - - - - - -
+ * The timer will stop when the player have answered the last question
+ * and also save the time in a variable called 'finalTime'
+*/
 function stopTimer(): void {
   clearInterval(timerInterval);
-
-  const finalTime = minutes + ':' + formattedNumber(seconds);
-
-  // Shows the final time:
-  console.log('Your final time:', finalTime);
 }
 
-// Function that handles when the user clicks on an answer option
+/** - - - - - - - - - - - - - - HANDLE ANSWER - - - - - - - - - - - - - - -
+ * Function that handles when the user clicks on an answer option
+*/
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
   const isCorrect = clickedBtn.dataset.correct === 'true';
+
   // Updates score with 5 points if answer is correct
   if (isCorrect) {
     score += 5;
@@ -183,7 +192,29 @@ function handleAnswer(event: Event): void {
   }
 }
 
-// Function to display final results
+/** - - - - - - - - - - - - - - MARK ANSWER BUTTONS - - - - - - - - - - - -
+ * Changes the color of the answer buttons based on whether 
+ * the answer is correct or incorrect
+*/
+function markAnswerButtons(isCorrect: boolean): void {
+  const answerButtons = document.querySelectorAll('.answerBtn');
+  answerButtons.forEach((btn) => {
+    btn.classList.remove('correct', 'incorrect');
+    const correctAttribute = btn.getAttribute('data-correct');
+    if (correctAttribute === 'true') {
+      btn.classList.add('correct');
+      nextBtn?.removeAttribute('disabled');
+    } else {
+      btn.classList.add('incorrect');
+      nextBtn?.removeAttribute('disabled');
+    }
+    console.log(isCorrect);
+  });
+}
+
+/** - - - - - - - - - - - - - - FINAL RESULTS - - - - - - - - - - - - - - -
+ * Display final results
+*/
 function displayFinalResults(): void {
   const finalScoreElement: HTMLElement | null = document.querySelector('#finalScore');
   const finalTimeElement: HTMLElement | null = document.querySelector('#finalTime');
@@ -207,75 +238,3 @@ function displayFinalResults(): void {
     scoreContainer.classList.add('hidden');
   }
 }
-
-// Function that changes the color of the answer buttons based on whether the answer is correct or incorrect
-function markAnswerButtons(isCorrect: boolean): void {
-  const answerButtons = document.querySelectorAll('.answerBtn');
-  answerButtons.forEach((btn) => {
-    btn.classList.remove('correct', 'incorrect');
-    const correctAttribute = btn.getAttribute('data-correct');
-    if (correctAttribute === 'true') {
-      btn.classList.add('correct');
-      nextBtn?.removeAttribute('disabled');
-    } else {
-      btn.classList.add('incorrect');
-      nextBtn?.removeAttribute('disabled');
-    }
-    console.log(isCorrect);
-  });
-}
-
-
-
-
-/**
- import typescriptLogo from './assets/images/typescript.svg'; // Exempel på hur ni importerar bilder
-import { sortArrayByText } from './helpers'; // Exempel på hur ni importerar en funktion från en annan fil
-
-/**
- * Här definierar vi en mall för hur vi vill att vår array ska se ut.
- * Ett så kallat "interface".
- * Den är för att garantera att ALLA objekt i vår array har samtliga egenskaper.
- * Prova t.ex. att lägga till en egenskap i interfacet, och notera hur arrayen nedanför
- * får rödmarkeringar där denna egenskap saknas.
- 
-interface IExampleArray {
-  name: string;
-  age: number;
-}
-
-// Här skriver vi att vår array med namnet myExampleArray ska följa reglerna (interfacet)
-// i IExampleArray och att det är en array genom att vi sätter [] efter
-const myExampleArray: IExampleArray[] = [
-  {
-    name: 'Hans',
-    age: 25,
-  },
-  {
-    name: 'Greta',
-    age: 30,
-  },
-  {
-    name: 'Häxan',
-    age: 87,
-  },
-];
-
-// Skriv ut den sorterade arrayen i konsolen, använd en importerad funktion
-console.table(sortArrayByText(myExampleArray, 'name'));
-
-// Använd samma funktion för att sortera på en annan egenskap
-console.table(sortArrayByText(myExampleArray, 'age'));
-
-// Hämta ett HTML-element från index.html
-const container: HTMLDivElement | null = document.querySelector('#app');
-
-if (container !== null) { // Om HTML-elementet finns
-  container.innerHTML = `
-    <div>
-      <h1>Hello FED23D!</h1>
-      <img src="${typescriptLogo}" loading="lazy" width="32" height="32"
-        alt="Blå bakgrund, vita bokstäver ovanpå med texten TS">
-    </div>
-  `;
-} */

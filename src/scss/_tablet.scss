@@ -1,35 +1,17 @@
-main {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 16px;
-}
+// main {
+//     display: grid;
+//     grid-template-columns: repeat(6, minmax(0, 1fr));
+//     gap: 16px;
+// }
 
-.welcome-heading {
-    grid-column: span 6;
-    font-size: 4rem;
-}
+// .welcome-heading {
+//     grid-column: span 6;
+//     font-size: 4rem;
+// }
 
-.start-quiz-btn {
-    grid-column: 2 / span 4;
-    height: 150px;
-    font-size: 3rem;
-}
+// .start-quiz-btn {
+//     grid-column: 2 / span 4;
+//     height: 150px;
+//     font-size: 3rem;
+// }
 
-.timer-container {
-    position: absolute;
-    display: flex;
-    align-items: end;
-    bottom: 0;
-    right: 0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 0.8rem;
-    font-family: 'Roboto', sans-serif;
-}
-
-.clock-icon {
-    fill: #ffff;
-    width: 18px;
-    height: 18px;
-    margin-right: 5px;
-}
