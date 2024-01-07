@@ -141,7 +141,8 @@ function showNextQuestion(): void {
       const answerBtn = document.createElement('button');
       answerBtn.textContent = answer;
       answerBtn.className = 'answerBtn';
-      answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
+      const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswer];
+      answerBtn.dataset.correct = correctAnswerString === answer ? 'true' : 'false';
       answerBtn.addEventListener('click', handleAnswer);
   
       // Add the answer button to the answer container
