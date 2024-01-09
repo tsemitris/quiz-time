@@ -120,6 +120,9 @@ function formattedNumber(number: number): string {
 /** - - - - - - - - - - - - - NEXT QUESTION BUTTON - - - - - - - - - - - - -
  * Show the next question
 */
+// Flag to track whether the user has answered the current question
+let hasAnswered = false;
+
 nextBtn?.addEventListener('click', showNextQuestion);
 
 let currentQuestionIndex = 0;
@@ -171,6 +174,11 @@ function showNextQuestion(): void {
       nextBtn?.classList.add('hidden');
     }
 
+    // Enable answer buttons for the next question
+    if (hasAnswered) {
+      enableAnswerButtons();
+    }
+
     updateCounterDisplay();
   
   }
@@ -204,6 +212,36 @@ function handleAnswer(event: Event): void {
     stopTimer();
     displayFinalResults();
   }
+
+  // Disable answer buttons after the player has answered
+  disableAnswerButtons();
+
+  // Set the flag to indicate that the user has answered the current question
+  hasAnswered = true;
+}
+
+
+/* - - - - - - - - - - - - DISABLE ANSWER BUTTONS - - - - - - - - - - - - 
+* Disable answer buttons when the player has answered
+* and enable when a question is shown, before the player answers
+*/
+// Function to disable answer buttons
+function disableAnswerButtons(): void {
+  const answerButtons = document.querySelectorAll('.answerBtn');
+  answerButtons.forEach((btn) => {
+    btn.setAttribute('disabled', 'true');
+  });
+}
+
+// Function to enable answer buttons
+function enableAnswerButtons(): void {
+  const answerButtons = document.querySelectorAll('.answerBtn');
+  answerButtons.forEach((btn) => {
+    btn.removeAttribute('disabled');
+  });
+
+  // Reset the hasAnswered flag
+  hasAnswered = false;
 }
 
 /** - - - - - - - - - - - - - - MARK ANSWER BUTTONS - - - - - - - - - - - -
