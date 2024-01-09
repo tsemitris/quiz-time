@@ -11,9 +11,12 @@ const quizPage: HTMLElement | null = document.querySelector('#quizPage');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
+const scoreContainer: HTMLElement | null = document.querySelector('#scoreDisplay');
 
 // Results popup
 const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
+const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
+const restartQuizBtn: HTMLElement | null = document.querySelector('#restartQuizBtn');
 
 /** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
  * Update question counter display
@@ -72,11 +75,11 @@ function getRandomQuestions(): IQuestion[] {
 const randomQuestions = getRandomQuestions();
 
 
-
 // - - - - - - - - - - - - - - - - QUIZ TIMER - - - - - - - - - - - - - - - -
 let timerInterval: number;
 let seconds: number = 0;
 let minutes: number = 0;
+let hours: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
@@ -90,9 +93,19 @@ function updateTimer(): void {
   if (seconds === 60) {
     seconds = 0;
     minutes += 1;
+
+    if (minutes === 60) {
+      minutes = 0;
+      hours += 1;
+    }
   }
 
-  const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
+
+  const formattedTime = hours > 0 ?
+    formattedNumber(hours) + ':' + formattedNumber(minutes) + ':' + formattedNumber(seconds) :
+    formattedNumber(minutes) + ':' + formattedNumber(seconds);
+    // If the condition 'hours > 0' is true the numbers for hours will show, otherwise not
+
   const timerElement: HTMLElement | null = document.querySelector('#timer');
 
   if (timerElement !== null) {
@@ -219,8 +232,6 @@ function markAnswerButtons(isCorrect: boolean): void {
 function displayFinalResults(): void {
   const finalScoreElement: HTMLElement | null = document.querySelector('#finalScore');
   const finalTimeElement: HTMLElement | null = document.querySelector('#finalTime');
-  const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
-  const scoreContainer: HTMLElement | null = document.querySelector('#scoreDisplay');
 
   if (finalScoreElement !== null) {
     finalScoreElement.textContent = `Final Score: ${score}`;
@@ -238,4 +249,37 @@ function displayFinalResults(): void {
   if (scoreContainer !== null) {
     scoreContainer.classList.add('hidden');
   }
+}
+
+/** - - - - - - - - - - - - - - RESTART QUIZ - - - - - - - - - - - - - - -
+ * Resets everything and restarts the quiz again with new random questions when clicking the 
+ * restart quiz-button
+*/
+
+restartQuizBtn?.addEventListener('click', restartQuiz);
+
+function restartQuiz(): void {
+  score = 0;
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  currentQuestionIndex = 0;
+  // Reset score, timer and current question
+
+  if (resultsContainer !== null) {
+    resultsContainer.classList.add('hidden');
+  }
+  // Hide result container when restarting the quiz
+
+  if (scoreContainer !== null) {
+    scoreContainer.classList.remove('hidden');
+  }
+  // Show score counter when quiz starts again
+
+  updateTimer();
+  updateScoreDisplay();
+  updateCounterDisplay();
+  showNextQuestion(); 
+  startTimer();
+  // Activate the quiz again
 }
