@@ -196,7 +196,7 @@ function stopTimer(): void {
 */
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
-  const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswer];
+  const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswerIndex];
   const clickedAnswer =  clickedBtn.textContent;
 
   // const isCorrect = clickedBtn.dataset.correct === 'true';
