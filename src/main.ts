@@ -127,6 +127,7 @@ nextBtn?.addEventListener('click', showNextQuestion);
 
 let currentQuestionIndex = 0;
 const totalQuestions = 10;
+let currentQuestion = randomQuestions[currentQuestionIndex];
 
 function showNextQuestion(): void {
   // Clear the content of the answer container to prepare for a new answer buttons
@@ -139,7 +140,7 @@ function showNextQuestion(): void {
   
     // Get the current question by taking the question with the current question index
     // from the array of random questions
-    const currentQuestion = randomQuestions[currentQuestionIndex];
+    currentQuestion = randomQuestions[currentQuestionIndex];
   
   
     // Update the question container with the new question
@@ -157,8 +158,6 @@ function showNextQuestion(): void {
       const answerBtn = document.createElement('button');
       answerBtn.textContent = answer;
       answerBtn.className = 'answerBtn';
-      const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswer];
-      answerBtn.dataset.correct = correctAnswerString === answer ? 'true' : 'false';
       answerBtn.addEventListener('click', handleAnswer);
   
       // Add the answer button to the answer container
@@ -197,7 +196,11 @@ function stopTimer(): void {
 */
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
-  const isCorrect = clickedBtn.dataset.correct === 'true';
+  const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswer];
+  const clickedAnswer =  clickedBtn.textContent;
+
+  // const isCorrect = clickedBtn.dataset.correct === 'true';
+  const isCorrect = correctAnswerString === clickedAnswer;
 
   // Updates score with 5 points if answer is correct
   if (isCorrect) {
