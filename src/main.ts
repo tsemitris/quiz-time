@@ -199,7 +199,6 @@ function handleAnswer(event: Event): void {
   const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswerIndex];
   const clickedAnswer =  clickedBtn.textContent;
 
-  // const isCorrect = clickedBtn.dataset.correct === 'true';
   const isCorrect = correctAnswerString === clickedAnswer;
 
   // Updates score with 5 points if answer is correct
