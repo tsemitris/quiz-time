@@ -164,18 +164,18 @@
       <div id="answersContainer" class="answers-container">
         <div class="empty-box"></div>
         <button id="answerBtn1" class="empty-box active-question-box">
-          <div class="answer-label">A</div>
+          <span class="answer-label">A</span>
           <span class="answer-text">Test1</span>
         </button>
         <button id="answerBtn3" class="empty-box active-question-box">
-          <div class="answer-label">C</div>
+          <span class="answer-label">C</span>
           <span class="answer-text">Test2</span>
         </button>
         <div class="empty-box"></div>
         <div class="empty-box"></div>
         <div class="empty-box"></div>
         <button id="answerBtn2" class="empty-box active-question-box">
-          <div class="answer-label">B</div>
+          <span class="answer-label">B</span>
           <span class="answer-text">Test3</span>
         </button>
         <div class="empty-box"></div>
@@ -206,14 +206,16 @@
       </div>
     </section>
 
-    <!-- Result popup -->
     <section id="resultsPopup" class="results-popup hidden">
       <div id="resultsContainer" class="results-container">
-        <img id="resultIcon" class="result-icon" src="./src/assets/icons/happy_face.svg" alt="">
+        <!-- Icon -->
+        <img id="resultIcon" class="result-icon" src="/sad_face.svg" alt="black colored sad face icon">
+        <!-- Results info -->
         <div id="totalScore" class="result-text">You scored:</div>
         <div id="totalPoints" class="result-text">Total score: 500 points</div>
         <div id="totalSectionTime" class="result-text">It took you 01:00:00 minutes</div>
         <p class="result-under-text">Would you like to play a new quiz?</p>
+        <!-- Restart quiz button -->
         <button id="restartQuizBtn" class="restart-quiz-btn">
           Start a new quiz!
           <svg 
