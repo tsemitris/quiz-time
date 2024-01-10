@@ -7,7 +7,7 @@
   
   <!-- Website icon -->
   <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>"> -->
-  <link rel="icon" type="image/png" href="src/assets/logo/bergamotterna_logo.svg">
+  <link rel="icon" type="image/png" href="/bergamotterna_logo.svg">
    
   <!-- Website title -->
   <title>Quiz-time</title>
@@ -24,7 +24,8 @@
 
 <body>
   <main>
-    <section id="homePage" class="home-page"> 
+    
+    <section id="homePage" class="home-page">
       <!-- Empty boxes -->
       <div class="boxes-container">
         <div class="upper-container">
@@ -145,30 +146,87 @@
       </div>
     </section>
 
-    <!-- FIXME overflow conflict  -->
     <section id="quizPage" class="quiz-page hidden">
-      <!-- <h1>🚧 Under development</h1> -->
-      
-      <div id="scoreDisplay" class="score-display">Score: 0</div>
+      <!-- Question Box --> 
+      <div class="questions-container"> 
+        <!-- Current question out of total counter -->
         <span class="counter-display"></span>
-        <div id="timerContainer" class="timer-container">
-          <svg class="clock-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-          <path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
-          <span id="timer" class="timer">
-            00:00
-          </span>
+        <!-- Current question -->
+        <div class="question-container">
           <div id="questionsContainer"></div>
-          <div id="answersContainer"></div>
-          <button id="nextBtn" class="next-button hidden" disabled>Next</button>
         </div>
-        <div id="resultsContainer" class="results-container hidden">
-          <h2>Thanks for playing!</h2>
-          <div id="finalScore" class="final-score"></div>
-          <div id="finalTime" class="final-time"></div>
-          <button id="restartQuizBtn" class="restart-quiz-btn">Play again!</button>
+      </div>
+
+      <!-- Question mark -->
+      <img class="question-mark" src="./src/assets/images/questionmark.svg" alt="question mark with a lot of other question marks in different sizes" width="100" height="100">
+
+      <!-- Boxes -->
+      <div id="answersContainer" class="answers-container">
+        <div class="empty-box"></div>
+        <button id="answerBtn1" class="empty-box active-question-box">
+          <div class="answer-label">A</div>
+          <span class="answer-text">Test1</span>
+        </button>
+        <button id="answerBtn3" class="empty-box active-question-box">
+          <div class="answer-label">C</div>
+          <span class="answer-text">Test2</span>
+        </button>
+        <div class="empty-box"></div>
+        <div class="empty-box"></div>
+        <div class="empty-box"></div>
+        <button id="answerBtn2" class="empty-box active-question-box">
+          <div class="answer-label">B</div>
+          <span class="answer-text">Test3</span>
+        </button>
+        <div class="empty-box"></div>
+        <div class="empty-box"></div>
+      </div>
+
+      <!-- Score and timer -->
+      <div id="infoContainer" class="info-container">
+        <!-- Score -->
+        <div id="scoreDisplay" class="score-display">0 points</div>
+        <span class="line"> | </span>
+        <!-- Timer -->
+        <span id="timer" class="timer">00:00</span>
+      </div>
+
+      <!-- Next question button -->
+      <div class="next-question-button-container">
+        <button id="nextBtn" class="next-question-button hidden" disabled>
+          Next question
+          <svg 
+            class="arrow-icon"
+            width="64"
+            height="64"
+            viewBox="0 0 67 64">
+            <path d="M45.1552 34.6667L29.5219 49.6L33.5 53.3334L55.8334 32L33.5 10.6667L29.5219 14.4L45.1552 29.3334H11.1667V34.6667H45.1552Z"/>
+          </svg>
+        </button>
       </div>
     </section>
-  </main>
+
+    <!-- Result popup -->
+    <section id="resultsPopup" class="results-popup hidden">
+      <div id="resultsContainer" class="results-container">
+        <img id="resultIcon" class="result-icon" src="./src/assets/icons/happy_face.svg" alt="">
+        <div id="totalScore" class="result-text">You scored:</div>
+        <div id="totalPoints" class="result-text">Total score: 500 points</div>
+        <div id="totalSectionTime" class="result-text">It took you 01:00:00 minutes</div>
+        <p class="result-under-text">Would you like to play a new quiz?</p>
+        <button id="restartQuizBtn" class="restart-quiz-btn">
+          Start a new quiz!
+          <svg 
+            class="reset-icon"
+            height="24" 
+            width="24"
+            viewBox="0 -960 960 960">
+            <path d="M440-122q-121-15-200.5-105.5T160-440q0-66 26-126.5T260-672l57 57q-38 34-57.5 79T240-440q0 88 56 155.5T440-202v80Zm80 0v-80q87-16 143.5-83T720-440q0-100-70-170t-170-70h-3l44 44-56 56-140-140 140-140 56 56-44 44h3q134 0 227 93t93 227q0 121-79.5 211.5T520-122Z"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main> 
 
 
   <footer>
