@@ -9,11 +9,15 @@ const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn')
 // Quiz page
 const quizPage: HTMLElement | null = document.querySelector('#quizPage');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
-const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
+const infoContainer: HTMLElement | null = document.querySelector('#infoContainer');
 
 // Results popup
 const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
+const resultsPopup: HTMLElement | null = document.querySelector('#resultsPopup');
+const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
+const restartQuizBtn: HTMLElement | null = document.querySelector('#restartQuizBtn');
+let usersCorrectAnswers: number = 0;
 
 /** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
  * Update question counter display
@@ -32,7 +36,7 @@ let score = 0;
 function updateScoreDisplay(): void {
   const scoreDisplay: HTMLElement | null = document.querySelector('#scoreDisplay');
   if (scoreDisplay !== null) {
-    scoreDisplay.textContent = `Score: ${score}`; // Update the text content with the current score
+    scoreDisplay.textContent = `${score} points`; // Update the text content with the current score
   }
 }
 
@@ -69,7 +73,7 @@ function getRandomQuestions(): IQuestion[] {
   return randomQuestions;
 }
 
-const randomQuestions = getRandomQuestions();
+let randomQuestions = getRandomQuestions();
 
 
 
@@ -77,6 +81,7 @@ const randomQuestions = getRandomQuestions();
 let timerInterval: number;
 let seconds: number = 0;
 let minutes: number = 0;
+let hours: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
@@ -90,9 +95,18 @@ function updateTimer(): void {
   if (seconds === 60) {
     seconds = 0;
     minutes += 1;
+
+    if (minutes === 60) {
+      minutes = 0;
+      hours += 1;
+    }
   }
 
-  const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
+  const formattedTime = hours > 0 ?
+    formattedNumber(hours) + ':' + formattedNumber(minutes) + ':' + formattedNumber(seconds) :
+    formattedNumber(minutes) + ':' + formattedNumber(seconds);
+    // If the condition 'hours > 0' is true the numbers for hours will show, otherwise not
+
   const timerElement: HTMLElement | null = document.querySelector('#timer');
 
   if (timerElement !== null) {
@@ -107,59 +121,65 @@ function formattedNumber(number: number): string {
 /** - - - - - - - - - - - - - NEXT QUESTION BUTTON - - - - - - - - - - - - -
  * Show the next question
 */
-nextBtn?.addEventListener('click', showNextQuestion);
+
+const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 
 let currentQuestionIndex = 0;
 const totalQuestions = 10;
+let currentQuestion = randomQuestions[currentQuestionIndex];
+
+// Flag to track whether the user has answered the current question
+let hasAnswered = false;
+
+nextBtn?.addEventListener('click', showNextQuestion);
+
 
 function showNextQuestion(): void {
-  // Clear the content of the answer container to prepare for a new answer buttons
-  if (answersContainer !== null) {
-    answersContainer.innerHTML = '';
+  if (answersContainer === null || questionsContainer === null) {
+    return;
   }
 
-  if (answersContainer !== null && questionsContainer !== null) {
-    // Variable to know which question we are on - useful for next button and navigation
-  
-    // Get the current question by taking the question with the current question index
-    // from the array of random questions
-    const currentQuestion = randomQuestions[currentQuestionIndex];
-  
-  
-    // Update the question container with the new question
-    if (questionsContainer !== null) {
-      questionsContainer.textContent = currentQuestion.question;
-    }
-  
-    // Disable the next button until answer is clicked
-    nextBtn?.setAttribute('disabled', 'true');
-    // Show next button before all questions been answered
-    nextBtn?.classList.remove('hidden');
-  
-    // Create and add answer buttons for each answer option
-    currentQuestion.answers.forEach((answer: string) => {
-      const answerBtn = document.createElement('button');
-      answerBtn.textContent = answer;
-      answerBtn.className = 'answerBtn';
-      answerBtn.dataset.correct = currentQuestion.correctAnswer === answer ? 'true' : 'false';
-      answerBtn.addEventListener('click', handleAnswer);
-  
-      // Add the answer button to the answer container
-      if (answersContainer !== null) {
-        answersContainer.appendChild(answerBtn);
-      }
-    });
-    currentQuestionIndex += 1;
+  // Get the current question by taking the question with the current question index
+  // from the array of random questions
+  currentQuestion = randomQuestions[currentQuestionIndex];
+  questionsContainer.textContent = currentQuestion.question;
 
-    // Check if all questions are answered
-    if (currentQuestionIndex === totalQuestions) {
-      // Hide the next button when all questions are answered
-      nextBtn?.classList.add('hidden');
+  const containerButtons = answersContainer.querySelectorAll('button');
+  
+  for (let i: number = 0; i < containerButtons.length; i++) {
+    // Remove the class from the buttons in the previous question
+    containerButtons[i].classList.remove('correct-answer', 'incorrect-answer');
+
+    const currentAnswer: string = currentQuestion.answers[i];
+    const answerText = containerButtons[i].querySelector('.answer-text');
+    
+    if (answerText !== null) {
+      // Add the new answer in the button
+      answerText.textContent = currentAnswer;
     }
 
-    updateCounterDisplay();
-  
+    containerButtons[i].addEventListener('click', handleAnswer);
   }
+
+
+  // Disable the next button until answer is clicked
+  nextBtn?.setAttribute('disabled', 'true');
+  // Show next button before all questions been answered
+  nextBtn?.classList.remove('hidden');
+
+  currentQuestionIndex += 1;
+
+  // Check if all questions are answered
+  if (currentQuestionIndex === totalQuestions) {
+    // Hide the next button when all questions are answered
+    nextBtn?.classList.add('hidden');
+  }
+
+  if (hasAnswered) {
+    enableAnswerButtons();
+  }
+
+  updateCounterDisplay();
 }
 
 /** - - - - - - - - - - - - - ON LAST QUESTION - - - - - - - - - - - - - -
@@ -175,20 +195,57 @@ function stopTimer(): void {
 */
 function handleAnswer(event: Event): void {
   const clickedBtn = event.currentTarget as HTMLButtonElement;
-  const isCorrect = clickedBtn.dataset.correct === 'true';
+  const correctAnswerString = currentQuestion.answers[currentQuestion.correctAnswerIndex];
+  const clickedAnswer =  clickedBtn.querySelector('.answer-text')?.textContent;
 
+  const isCorrect = correctAnswerString === clickedAnswer;
+  
   // Updates score with 5 points if answer is correct
   if (isCorrect) {
     score += 5;
+    usersCorrectAnswers += 1;
     updateScoreDisplay();
   }
   // Mark the buttons based on whether the answer is correct or incorrect
-  markAnswerButtons(isCorrect);
+  markAnswerButtons(correctAnswerString, clickedBtn, isCorrect);
 
   // If the player has answered the last question, the stopTimer function will be activated
   if (currentQuestionIndex === randomQuestions.length) {
     stopTimer();
     displayFinalResults();
+  }
+
+  // Disable answer buttons after the player has answered
+  disableAnswerButtons();
+
+  // Set the flag to indicate that the user has answered the current question
+  hasAnswered = true;
+}
+
+/* - - - - - - - - - - - - DISABLE ANSWER BUTTONS - - - - - - - - - - - - 
+* Disable answer buttons when the player has answered
+* and enable when a question is shown, before the player answers
+*/
+// Function to disable answer buttons
+function disableAnswerButtons(): void {
+  if (answersContainer !== null) {
+    const containerButtons = answersContainer.querySelectorAll('button');
+    containerButtons.forEach((btn) => {
+      btn.setAttribute('disabled', 'true');
+    });
+  }
+}
+
+// Function to enable answer buttons
+function enableAnswerButtons(): void {
+  if (answersContainer !== null) {
+    const containerButtons = answersContainer.querySelectorAll('button');
+    containerButtons.forEach((btn) => {
+      btn.removeAttribute('disabled');
+    });
+
+    // Reset the hasAnswered flag
+    hasAnswered = false;
   }
 }
 
@@ -196,45 +253,109 @@ function handleAnswer(event: Event): void {
  * Changes the color of the answer buttons based on whether 
  * the answer is correct or incorrect
 */
-function markAnswerButtons(isCorrect: boolean): void {
-  const answerButtons = document.querySelectorAll('.answerBtn');
-  answerButtons.forEach((btn) => {
-    btn.classList.remove('correct', 'incorrect');
-    const correctAttribute = btn.getAttribute('data-correct');
-    if (correctAttribute === 'true') {
-      btn.classList.add('correct');
-      nextBtn?.removeAttribute('disabled');
-    } else {
-      btn.classList.add('incorrect');
-      nextBtn?.removeAttribute('disabled');
-    }
-    console.log(isCorrect);
-  });
+function markAnswerButtons(correctAnswerString: string, clickedBtn: HTMLButtonElement, isCorrect: boolean): void {
+  if (answersContainer === null ) {
+
+    return;
+  }
+  const containerButtons = answersContainer.querySelectorAll('button');
+
+  if (isCorrect) {
+    clickedBtn.classList.add('correct-answer');
+  } else {
+    clickedBtn.classList.add('incorrect-answer');
+
+    containerButtons.forEach((btn) => {
+      const currentButtonContent: string | null | undefined = btn.querySelector('.answer-text')?.textContent;
+
+      if (currentButtonContent === correctAnswerString) {
+        btn.classList.add('correct-answer');
+      }
+    });
+  }
+  nextBtn?.removeAttribute('disabled');
 }
 
 /** - - - - - - - - - - - - - - FINAL RESULTS - - - - - - - - - - - - - - -
  * Display final results
 */
 function displayFinalResults(): void {
-  const finalScoreElement: HTMLElement | null = document.querySelector('#finalScore');
-  const finalTimeElement: HTMLElement | null = document.querySelector('#finalTime');
-  const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
-  const scoreContainer: HTMLElement | null = document.querySelector('#scoreDisplay');
+  const totalScore: HTMLElement | null = document.querySelector('#totalScore');
+  const totalPoints: HTMLElement | null = document.querySelector('#totalPoints');
+  const totalSectionTime: HTMLElement | null = document.querySelector('#totalSectionTime');
 
-  if (finalScoreElement !== null) {
-    finalScoreElement.textContent = `Final Score: ${score}`;
+
+  // Results popup
+  if (resultsPopup !== null && resultsContainer !== null) {
+    resultsPopup.classList.remove('hidden');
+
+    resultsPopup.classList.add('result-in-animation');
+    setTimeout(() => {
+      resultsContainer.classList.add('result-in-animation');
+    }, .5 * 1000);
   }
 
-  if (finalTimeElement !== null) {
+  if (totalScore !== null) {
+    totalScore.textContent = `You scored: ${usersCorrectAnswers} / ${totalQuestions}`;
+  }
+
+  if (totalPoints !== null) {
+    totalPoints.textContent = `Total points: ${score}`;
+  }
+  
+  if (totalSectionTime !== null) {
+    // TODO add hours as well
     const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
-    finalTimeElement.textContent = `Time Taken: ${formattedTime}`;
+    totalSectionTime.textContent = `It took you ${formattedTime} minutes`;
   }
 
-  if (resultsContainer !== null) {
-    resultsContainer.classList.remove('hidden');
+  // Points and timer
+  if (infoContainer !== null) {
+    infoContainer.classList.add('hidden');
   }
+}
 
-  if (scoreContainer !== null) {
-    scoreContainer.classList.add('hidden');
+/** - - - - - - - - - - - - - - RESTART QUIZ - - - - - - - - - - - - - - -
+ * Resets everything and restarts the quiz again with new random questions when clicking the 
+ * restart quiz-button
+*/
+
+restartQuizBtn?.addEventListener('click', restartQuiz);
+
+function restartQuiz(): void {
+  score = 0;
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  currentQuestionIndex = 0;
+  // Reset score, timer and current question
+
+  if (resultsPopup !== null && resultsContainer !== null) {
+    resultsPopup.classList.remove('result-in-animation');
+    resultsContainer.classList.remove('result-in-animation');
+    resultsContainer.classList.add('result-out-animation');
+    setTimeout(() => {
+      resultsPopup.classList.add('result-out-animation');
+      setTimeout(() => {
+        resultsContainer.classList.remove('result-out-animation');
+        resultsPopup.classList.remove('result-out-animation');
+        resultsPopup.classList.add('hidden');
+      }, .5 * 1000);
+    }, .3 * 1000);
   }
+  // Hide result container when restarting the quiz
+
+  if (infoContainer !== null) {
+    infoContainer.classList.remove('hidden');
+  }
+  // Show score counter when quiz starts again
+
+  updateTimer();
+  updateScoreDisplay();
+  updateCounterDisplay();
+  usersCorrectAnswers = 0;
+  randomQuestions = getRandomQuestions();
+  showNextQuestion(); 
+  startTimer();
+  // Activate the quiz again
 }
