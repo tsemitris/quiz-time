@@ -7,6 +7,7 @@ const homePage: HTMLElement | null = document.querySelector('#homePage');
 const startQuizBtn: HTMLElement | null = document.querySelector('#startQuizBtn');
 
 // Quiz page
+const totalQuestions: number = 10;
 const quizPage: HTMLElement | null = document.querySelector('#quizPage');
 const questionsContainer: HTMLElement | null = document.querySelector('#questionsContainer');
 const nextBtn: HTMLButtonElement | null = document.querySelector('#nextBtn');
@@ -16,8 +17,10 @@ const infoContainer: HTMLElement | null = document.querySelector('#infoContainer
 const counterDisplay: HTMLElement | null = document.querySelector('.counter-display');
 const resultsPopup: HTMLElement | null = document.querySelector('#resultsPopup');
 const resultsContainer: HTMLElement | null = document.querySelector('#resultsContainer');
+const resultIcon: HTMLImageElement | null = document.querySelector('#resultIcon');
 const restartQuizBtn: HTMLElement | null = document.querySelector('#restartQuizBtn');
 let usersCorrectAnswers: number = 0;
+
 
 /** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
  * Update question counter display
@@ -58,7 +61,7 @@ function getRandomQuestions(): IQuestion[] {
   // New empty array to contain the questions
   const randomQuestions: IQuestion[] = [];
 
-  let noOfQuestions = 10;
+  let noOfQuestions = totalQuestions;
 
   while (noOfQuestions > 0) {
     const question = questions[Math.floor(Math.random() * questions.length)];
@@ -125,7 +128,6 @@ function formattedNumber(number: number): string {
 const answersContainer: HTMLElement | null = document.querySelector('#answersContainer');
 
 let currentQuestionIndex = 0;
-const totalQuestions = 10;
 let currentQuestion = randomQuestions[currentQuestionIndex];
 
 // Flag to track whether the user has answered the current question
@@ -284,6 +286,32 @@ function displayFinalResults(): void {
   const totalPoints: HTMLElement | null = document.querySelector('#totalPoints');
   const totalSectionTime: HTMLElement | null = document.querySelector('#totalSectionTime');
 
+  // This variables is for change the image in the result popup
+  const currentSrc = resultIcon?.currentSrc;
+  const baseURL = currentSrc?.substring(0, currentSrc.lastIndexOf('/') + 1);
+  
+  
+  if (usersCorrectAnswers === totalQuestions) {
+    if (resultIcon !== null) {
+      resultIcon.src = `${baseURL}fire.svg`;
+      resultIcon.alt = 'black colored fire icon';
+    }
+  } else if (usersCorrectAnswers >= (totalQuestions / 2) && usersCorrectAnswers < totalQuestions) {
+    if (resultIcon !== null) {
+      resultIcon.src = `${baseURL}star.svg`;
+      resultIcon.alt = 'two black colored stars icon';
+    }
+  } else if (usersCorrectAnswers > 0 && usersCorrectAnswers <= (totalQuestions / 2)) {
+    if (resultIcon !== null) {
+      resultIcon.src = `${baseURL}happy_face.svg`;
+      resultIcon.alt = 'black colored happy face icon';
+    }
+  } else if (usersCorrectAnswers === 0) {
+    if (resultIcon !== null) {
+      resultIcon.src = `${baseURL}sad_face.svg`;
+      resultIcon.alt = 'black colored sad face icon';
+    }
+  }
 
   // Results popup
   if (resultsPopup !== null && resultsContainer !== null) {
