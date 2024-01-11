@@ -199,7 +199,6 @@ main {
 
     .home-page {
         overflow: hidden;   
-        padding: 50px;
 
         // Main page info box
         .main-info-container {
@@ -310,6 +309,12 @@ main {
         position: relative;
         overflow-x: hidden;
         
+        .info-container,
+        .answers-container,
+        .next-question-button-container {
+            z-index: 2;
+        }
+        
         // Question container
         .questions-container {
             height: 605px;
@@ -320,6 +325,8 @@ main {
             .question-container {
                 color: var(--general-font-color);
                 font-weight: 300;
+                position: relative;
+                z-index: 2;
             }
 
             .counter-display {
@@ -327,8 +334,9 @@ main {
             }
 
             .question-container {
-                margin: 26px 0 0 0;
                 font-size: var(--question-font-size);
+                text-align: center;
+                margin: 26px 0 0 0;
             }
         }
 
@@ -341,7 +349,7 @@ main {
             font-size: var(--header-font-size);
             color: var(--general-font-color);
             display: flex;
-
+            
             .line {
                 @include visibilityHidden();
             }
@@ -436,6 +444,7 @@ main {
             width: 100vw;
             display: flex;
             justify-content: center;
+            position: relative;
 
             .next-question-button {
                 font-size: 0;
@@ -462,7 +471,19 @@ main {
                 }
             }
         }
+
+        // Mobile background shapes
+        .mobile-background-shapes {
+            width: 100vw;
+            height: 106vh;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            background-image: url('/question_mark_frame.svg');
+            padding: 0 0 0 20px;
+        }
     }
+
 
     .results-popup {
         position: fixed;
