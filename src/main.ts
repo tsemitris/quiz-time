@@ -39,7 +39,10 @@ let score = 0;
 function updateScoreDisplay(): void {
   const scoreDisplay: HTMLElement | null = document.querySelector('#scoreDisplay');
   if (scoreDisplay !== null) {
-    scoreDisplay.textContent = `${score} points`; // Update the text content with the current score
+    // Update the text content with the current score
+    scoreDisplay.innerHTML = `
+      <span class="score-icon"></span> ${score} points
+    `; 
   }
 }
 
@@ -113,7 +116,7 @@ function updateTimer(): void {
   const timerElement: HTMLElement | null = document.querySelector('#timer');
 
   if (timerElement !== null) {
-    timerElement.innerText = formattedTime;
+    timerElement.innerHTML = `<span class="timer-icon"></span> ${formattedTime}`;
   }
 }
 
