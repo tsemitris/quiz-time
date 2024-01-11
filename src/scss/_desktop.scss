@@ -587,7 +587,6 @@ main {
             .next-question-button {
                 font-size: 0;
                 padding: 10px;
-                // margin: 20px 0 0 0;
                 border-radius: 50%;
                 background: linear-gradient(to right, var(--question-gradient-start-color) 0%, var(--question-gradient-end-color) 100%);
                 border: none;
@@ -601,6 +600,7 @@ main {
                 }
 
                 .arrow-icon {
+                    transform: scale(.7);
                     fill: white;
                 }
             }
