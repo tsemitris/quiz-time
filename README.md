@@ -5,11 +5,11 @@ This quiz page was a team project during our ‘Agile Working Methods’ and ‘
 
 ## 📷 Screenshots
 
-### 📱 Mobile version
-(Här lägger vi screenshot(s) på mobilversionen)
-
-### 🖥️ Desktop version
-(Här lägger vi screenshot(s) på desktopversionen)
+![HomePage](https://imgur.com/Lzng3fg.png)
+![QuizPage](https://imgur.com/JaSx4ZH.png)
+![QuizPageCorrectAnswer](https://imgur.com/PNpgMvU.png)
+![QuizPageIncorrectAnswer](https://imgur.com/Kcl0Cbo.png)
+![ResultPopup](https://imgur.com/6lhqUSY.png)
 
 ## ⚙️ Features
 ### 1. Randomised Questions
@@ -50,17 +50,22 @@ Contrast and Font Choices: Thoughtful design choices enhance readability and usa
 
 These features collectively contribute to a dynamic and engaging quiz experience, catering to a broad audience with varying preferences and skill levels.
 
-## Tech stack
+## 👨🏻‍💻 Tech stack
 
-![](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white) 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-![](https://img.shields.io/badge/-Sass-CC6699?style=flat&logo=sass&logoColor=white) 
 
-![](https://img.shields.io/badge/-Javascript-f7df1e?style=flat&logo=javascript&logoColor=black) 
+![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-![](https://img.shields.io/badge/-Prettier-F7B93E?style=flat&logo=prettier&logoColor=black) 
+![JavaScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-![](https://img.shields.io/badge/-ESLint-4B32C3?style=flat&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
+![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+
+
+![Grid/Flex](https://img.shields.io/badge/Grid%20/%20flexbox-grey.svg?style=for-the-badge&logoColor=white)
 
 ## Validation
 
@@ -68,81 +73,92 @@ These features collectively contribute to a dynamic and engaging quiz experience
 
 
 ### ✅ HTML & CSS 
-(Här lägger vi screenshots på validering av HTML och CSS)
+![HtmlCssValidation](https://imgur.com/PMGZa9K.png)
 
-## The team
+## 👥 The team
 
-<ul>
-  <li><a href="https://github.com/Ogen1998">Augustine Al-Zebrary</a></li>
-  <li><a href="https://github.com/DiemBang">Dieam Bang</a></li>
-  <li><a href="https://github.com/helenaskagerlid">Helena Skagerlid</a></li>
-  <li><a href="https://github.com/tsemitris">Nikolaos Sarris</a> </li>
-  <li><a href="https://github.com/RebeckaGothlin">Rebecka Göthlin</a> </li>
-</ul>
+[![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/augustine-al-zebary-1094a5163/)
+[![Github](https://img.shields.io/badge/Augustine%20AI%20Zebrary-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ogen1998)
+
+[![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://github.com/DiemBang)
+[![Github](https://img.shields.io/badge/Dieam%20Bang-100000?style=for-the-badge&logo=github&logoColor=white)](https://www.linkedin.com/in/diem-bang-6357a025/)
+
+[![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/helena-skagerlid-7b8206203/)
+[![Github](https://img.shields.io/badge/Helena%20Skagerlid-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/helenaskagerlid)
+
+[![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nikolaos-sarris/)
+[![Github](https://img.shields.io/badge/Nikolaos%20Sarris-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tsemitris)
+
+[![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rebecka-g%C3%B6thlin-963037280/)
+[![Github](https://img.shields.io/badge/Rebecka%20Göthlin-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RebeckaGothlin)
 
 
 
 
 
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ZejtqupA)
-# Projektmall FED23D
-Läs instruktionerna på kurswebben för att komma igång.
+<details>
+  <summary>Uppgifts checklista</summary>
+  
+  [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ZejtqupA)
+  # Projektmall FED23D
+  Läs instruktionerna på kurswebben för att komma igång.
 
-## Betyg
-Klicka i vilka krav ni har gjort:
+  ## Betyg
+  Klicka i vilka krav ni har gjort:
 
-- [x] Exempel på utförd/ikryssad uppgift
-- [ ] Ej utförd uppgift
+  - [x] Exempel på utförd/ikryssad uppgift
+  - [ ] Ej utförd uppgift
 
-### För Icke Godkänt
-- [ ] Du har inte deltagit i arbetet och/eller gjort commits (det syns tydligt i Insights-fliken på ert repo)
-- [ ] Du/ni har inte följt instruktionerna
-- [ ] Du/ni uppvisar avsaknad av kunskaper i såväl HTML, CSS som JavaScript och du/ni har ignorerat semantik och tillgänglighet
+  ### För Icke Godkänt
+  - [ ] Du har inte deltagit i arbetet och/eller gjort commits (det syns tydligt i Insights-fliken på ert repo)
+  - [ ] Du/ni har inte följt instruktionerna
+  - [ ] Du/ni uppvisar avsaknad av kunskaper i såväl HTML, CSS som JavaScript och du/ni har ignorerat semantik och tillgänglighet
 
-### För Godkänt
-#### Kodkvalitet
-- [ ] Koden är korrekt formaterad.
-- [ ] Koden innehåller enstaka buggar, men fungerar på det stora hela.
-- [ ] Ni har gjort åtminstone en mobilversion; om ni återanvänder samma layout i tablet/desktop så går det bra.
-- [ ] Sidan ska vara någorlunda snygg (CSS).
-- [ ] Ni har checkat av "vanliga misstag" från tidigare uppgifter, såväl HTML & CSS som JavaScript.
-- [ ] Sidan är tillgänglighetsgranskad.
-- [ ] Sidan är validerad.
-- [ ] Ni har gjort en Lighthouse-analys på live-sidan.
+  ### För Godkänt
+  #### Kodkvalitet
+  - [ ] Koden är korrekt formaterad.
+  - [ ] Koden innehåller enstaka buggar, men fungerar på det stora hela.
+  - [ ] Ni har gjort åtminstone en mobilversion; om ni återanvänder samma layout i tablet/desktop så går det bra.
+  - [ ] Sidan ska vara någorlunda snygg (CSS).
+  - [ ] Ni har checkat av "vanliga misstag" från tidigare uppgifter, såväl HTML & CSS som JavaScript.
+  - [ ] Sidan är tillgänglighetsgranskad.
+  - [ ] Sidan är validerad.
+  - [ ] Ni har gjort en Lighthouse-analys på live-sidan.
 
-#### Funktionsbeskrivning
-- [ ] Skapa ett quiz med minst 20 frågor
-- [ ] Varje fråga ska ha 3 svarsalternativ och endast 1 svarsalternativ ska vara korrekt
-- [ ] Frågorna ska presenteras i slumpmässig ordning, och du ska visa 10 frågor per spelomgång
-- [ ] Om användaren väljer att spela igen, så ska inte samma 10 frågor komma upp på nytt
-- [ ] Du ska få poäng för rätt svar
-- [ ] Det ska bara visas en fråga åt gången på skärmen
-- [ ] Det ska finnas en tidräkning (uppåt). Tidräkningen ska stanna när alla frågor har besvarats.
-- [ ] Det ska visas en bekräftelseruta som visar hur många frågor spelaren svarade rätt på (av totalt antal frågor), och hur lång tid det tog.
-- [ ] Varje person ska ha gjort minst två pull requests.
+  #### Funktionsbeskrivning
+  - [ ] Skapa ett quiz med minst 20 frågor
+  - [ ] Varje fråga ska ha 3 svarsalternativ och endast 1 svarsalternativ ska vara korrekt
+  - [ ] Frågorna ska presenteras i slumpmässig ordning, och du ska visa 10 frågor per spelomgång
+  - [ ] Om användaren väljer att spela igen, så ska inte samma 10 frågor komma upp på nytt
+  - [ ] Du ska få poäng för rätt svar
+  - [ ] Det ska bara visas en fråga åt gången på skärmen
+  - [ ] Det ska finnas en tidräkning (uppåt). Tidräkningen ska stanna när alla frågor har besvarats.
+  - [ ] Det ska visas en bekräftelseruta som visar hur många frågor spelaren svarade rätt på (av totalt antal frågor), och hur lång tid det tog.
+  - [ ] Varje person ska ha gjort minst två pull requests.
 
-### För plus i kanten
-#### Kodkvalitet
-- [ ] Koden följer konventioner och praxis.
-- [ ] Projektets utförande är ambitiöst och väl genomarbetat. Ni har inte tagit på er för mycket, utan sett till att det ni har är genomarbetat.
-- [ ] Ni har tagit höjd för responsiv design (CSS) och CSS:en är välskriven.
-- [ ] Koden är korrekt formaterad med ESLint och Prettier.
-- [ ] Projektets kod är självdokumenterande. Där det är otydligt har du skrivit till kommentarer. Exempelvis heter variabler och funktioner på ett sådant sätt att det är tydligt vad de gör.
-- [ ] Ni har aktivt arbetat för att minska kodupprepning, men det är OK om det förekommer en del. Ibland kan kodupprepning t.ex. vara bra för att koden blir tydligare att läsa, så all upprepning är inte av ondo.
-- [ ] Ingen spaghettikod :spaghetti:
-- [ ] Anonyma funktioner används med omsorg.
-- [ ] Koden och projektet har en logisk struktur.
-- [ ] Ni har skrivit en ordentlig README (projektbeskrivning, skrämdumpar, deltagare i arbetet).
+  ### För plus i kanten
+  #### Kodkvalitet
+  - [ ] Koden följer konventioner och praxis.
+  - [ ] Projektets utförande är ambitiöst och väl genomarbetat. Ni har inte tagit på er för mycket, utan sett till att det ni har är genomarbetat.
+  - [ ] Ni har tagit höjd för responsiv design (CSS) och CSS:en är välskriven.
+  - [ ] Koden är korrekt formaterad med ESLint och Prettier.
+  - [ ] Projektets kod är självdokumenterande. Där det är otydligt har du skrivit till kommentarer. Exempelvis heter variabler och funktioner på ett sådant sätt att det är tydligt vad de gör.
+  - [ ] Ni har aktivt arbetat för att minska kodupprepning, men det är OK om det förekommer en del. Ibland kan kodupprepning t.ex. vara bra för att koden blir tydligare att läsa, så all upprepning är inte av ondo.
+  - [ ] Ingen spaghettikod :spaghetti:
+  - [ ] Anonyma funktioner används med omsorg.
+  - [ ] Koden och projektet har en logisk struktur.
+  - [ ] Ni har skrivit en ordentlig README (projektbeskrivning, skrämdumpar, deltagare i arbetet).
 
-#### Funktionsbeskrivning
-- [ ] Det ska finnas en "progess bar" som visar hur många av frågorna som hittills har besvarats
-- [ ] Flera svarsalternativ ska kunna vara korrekta
-- [ ] Du får olika poäng beroende på hur snabbt du svarar på frågan (ni får komma på själva hur det ska funka, dokumentera i README:n)
-- [ ] Du får minuspoäng om du svarar fel
-- [ ] Du ska kunna välja vem du vill spela som, eller skapa en ny användare (förutsättningen här är att man använder samma webbläsare; använd local storage). Se exempelskiss nedan.
-- [ ] Implementera ett highscore (max 10 platser) med hjälp av local storage
-- [ ] Det ska finnas med en animation för rätt svar, och en animation för fel svar. Det kan t.ex. vara en stjärna som roterar, byter färg, eller en knapp som skakar. Vad ni gör spelar ingen roll, men ni ska implementera det med hjälp av GSAP.
-- Välj ett av nedan:
-  - [ ] Man ska kunna välja att spela mellan lätta, medelsvåra och svåra frågor. Planera hur detta påverkar highscoren.
-  - [ ] Det ska vara som en julkalender: bakom varje lucka (24 st) så visas det X antal nya frågor per dag.
+  #### Funktionsbeskrivning
+  - [ ] Det ska finnas en "progess bar" som visar hur många av frågorna som hittills har besvarats
+  - [ ] Flera svarsalternativ ska kunna vara korrekta
+  - [ ] Du får olika poäng beroende på hur snabbt du svarar på frågan (ni får komma på själva hur det ska funka, dokumentera i README:n)
+  - [ ] Du får minuspoäng om du svarar fel
+  - [ ] Du ska kunna välja vem du vill spela som, eller skapa en ny användare (förutsättningen här är att man använder samma webbläsare; använd local storage). Se exempelskiss nedan.
+  - [ ] Implementera ett highscore (max 10 platser) med hjälp av local storage
+  - [ ] Det ska finnas med en animation för rätt svar, och en animation för fel svar. Det kan t.ex. vara en stjärna som roterar, byter färg, eller en knapp som skakar. Vad ni gör spelar ingen roll, men ni ska implementera det med hjälp av GSAP.
+  - Välj ett av nedan:
+    - [ ] Man ska kunna välja att spela mellan lätta, medelsvåra och svåra frågor. Planera hur detta påverkar highscoren.
+    - [ ] Det ska vara som en julkalender: bakom varje lucka (24 st) så visas det X antal nya frågor per dag.
+</details>
