@@ -475,9 +475,9 @@ main {
         // Mobile background shapes
         .mobile-background-shapes {
             width: 100vw;
-            height: 106vh;
+            height: 100vh;
             position: absolute;
-            top: 0;
+            bottom: 0;
             z-index: 1;
             background-image: url('/question_mark_frame.svg');
             padding: 0 0 0 20px;
