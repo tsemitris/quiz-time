@@ -11,8 +11,9 @@
   <!-- Website title -->
   <title>Quiz-time</title>
 
-  <!-- Og meta tags -->
+  <!-- Meta tag(s) -->
   <meta name="language" content="EN">
+  <!-- Og meta tag(s) -->
   <meta property="og:title" content="Quiz-time">
   <meta property="og:description" content="Test your knowledge with our interactive quiz! Challenge yourself with fun questions and improve your learning.">
 
@@ -169,18 +170,18 @@
         <div class="empty-box"></div>
         <button id="answerBtn1" class="empty-box active-question-box">
           <span class="answer-label">A</span>
-          <span class="answer-text">Test1</span>
+          <span class="answer-text"></span>
         </button>
         <button id="answerBtn3" class="empty-box active-question-box">
-          <span class="answer-label">C</span>
-          <span class="answer-text">Test2</span>
+          <span class="answer-label">B</span>
+          <span class="answer-text"></span>
         </button>
         <div class="empty-box"></div>
         <div class="empty-box"></div>
         <div class="empty-box"></div>
         <button id="answerBtn2" class="empty-box active-question-box">
-          <span class="answer-label">B</span>
-          <span class="answer-text">Test3</span>
+          <span class="answer-label">C</span>
+          <span class="answer-text"></span>
         </button>
         <div class="empty-box"></div>
         <div class="empty-box"></div>
@@ -189,10 +190,10 @@
       <!-- Score and timer -->
       <div id="infoContainer" class="info-container">
         <!-- Score -->
-        <div id="scoreDisplay" class="score-display">0 points</div>
+        <div id="scoreDisplay" class="score-display"><span class="score-icon"></span>0 points</div>
         <span class="line"> | </span>
         <!-- Timer -->
-        <span id="timer" class="timer">00:00</span>
+        <div id="timer" class="timer"><span class="timer-icon"></span>00:00</div>
       </div>
 
       <!-- Next question button -->
@@ -208,6 +209,8 @@
           </svg>
         </button>
       </div>
+
+      <!-- <div class="mobile-background-shapes"></div> -->
     </section>
 
     <section id="resultsPopup" class="results-popup hidden">
