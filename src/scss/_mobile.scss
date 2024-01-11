@@ -310,6 +310,7 @@ main {
         position: relative;
         overflow-x: hidden;
         
+        // Question container
         .questions-container {
             height: 605px;
             background: linear-gradient(to bottom, var(--question-gradient-start-color) 0%, var(--question-gradient-end-color) 100%);
@@ -331,6 +332,7 @@ main {
             }
         }
 
+        // Score and timer
         .info-container {
             position: absolute;
             top: 26px;
@@ -374,6 +376,7 @@ main {
             @include visibilityHidden();
         }
 
+        // Answer buttons
         .answers-container {
             width: 100vw;
             display: flex;
@@ -415,18 +418,19 @@ main {
                     align-items: center;
                 }
             }
+
+            .correct-answer {
+                box-shadow: inset 0 0 0 8px var(--answer-correct-color);
+                transition: box-shadow .4s ease-in-out 0s;
+            }
+    
+            .incorrect-answer {
+                box-shadow: inset 0 0 0 8px var(--answer-incorrect-color);
+                transition: box-shadow .4s ease-in-out 0s;
+            }
         }
 
-        .correct-answer {
-            box-shadow: inset 0 0 0 8px var(--answer-correct-color);
-            transition: box-shadow .4s ease-in-out 0s;
-        }
-
-        .incorrect-answer {
-            box-shadow: inset 0 0 0 8px var(--answer-incorrect-color);
-            transition: box-shadow .4s ease-in-out 0s;
-        }
-
+        // Next button
         .next-question-button-container {
             margin: 170px 0 var(--footer-height) 0;
             width: 100vw;
@@ -522,6 +526,7 @@ main {
         }
     }
 
+    // Animations
     .result-in-animation {
         animation: leftToRightTransition .8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
     }

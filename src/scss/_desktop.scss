@@ -451,6 +451,7 @@ main {
             grid-row: 1;
         }
 
+        // Question container
         .questions-container {
             grid-column: 1 / span 8;
             background: linear-gradient(to right, var(--question-gradient-start-color) 0%, var(--question-gradient-end-color) 100%);
@@ -488,6 +489,7 @@ main {
             user-select: none;
         }
 
+        // Answer buttons
         .answers-container {
             grid-column: 1 / span 12;
             @include gridCreation(column, 12, 1fr, 20px);
@@ -563,6 +565,7 @@ main {
             }
         }
 
+        // Next button
         .next-question-button-container {
             grid-column: 6 / span 2;
             display: flex;
@@ -592,6 +595,7 @@ main {
             }
         }
 
+        // Score and timer
         .info-container {
             display: flex;
             align-items: center;
@@ -679,6 +683,7 @@ main {
         }
     }
 
+    // Animations
     .result-in-animation {
         animation: leftToRightTransition .8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 forwards;
     }
