@@ -21,7 +21,6 @@ const resultIcon: HTMLImageElement | null = document.querySelector('#resultIcon'
 const restartQuizBtn: HTMLElement | null = document.querySelector('#restartQuizBtn');
 let usersCorrectAnswers: number = 0;
 
-
 /** - - - - - - - - - CURRENT QUESTION COUNTER OUT OF TOTAL - - - - - - - - - - 
  * Update question counter display
 */
@@ -82,7 +81,6 @@ function getRandomQuestions(): IQuestion[] {
 let randomQuestions = getRandomQuestions();
 
 
-
 // - - - - - - - - - - - - - - - - QUIZ TIMER - - - - - - - - - - - - - - - -
 let timerInterval: number;
 let hours: number = 0;
@@ -137,7 +135,6 @@ let currentQuestion = randomQuestions[currentQuestionIndex];
 let hasAnswered = false;
 
 nextBtn?.addEventListener('click', showNextQuestion);
-
 
 function showNextQuestion(): void {
   if (answersContainer === null || questionsContainer === null) {
