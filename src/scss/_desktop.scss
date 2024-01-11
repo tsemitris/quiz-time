@@ -97,6 +97,17 @@
     transform: translate(-50%, -50%);
 }
 
+@mixin visibilityHidden() {
+    visibility: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 0vh;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 0vw;
+}
+
 @mixin buttonReset($removeBackgroundColor, $paddingValue, $marginValue, $borderValue, $colorValue) {
 
     @if $removeBackgroundColor == 'none' {
@@ -611,6 +622,11 @@ main {
             .line {
                 margin: 0 10px;
             }
+        }
+
+        // Mobile background shapes
+        .mobile-background-shapes {
+            @include visibilityHidden();
         }
     }
 
