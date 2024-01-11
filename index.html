@@ -34,30 +34,30 @@
 
 <body>
   <main>
-    
-    <section id="homePage" class="home-page">
+    <!-- TODO Add arial labels if needeed -->
+    <section id="homePage" class="home-page" aria-label="home page">
       <!-- Empty boxes -->
       <div class="boxes-container">
         <div class="upper-container">
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
         </div>
         <div class="lower-container">
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
-          <div class="box"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
+          <div class="box" aria-label="empty box for design purposes"></div>
         </div>
       </div>
 
       <!-- Info box -->
       <article class="main-info-container">
-        <h2 class="head-title">An engaging quiz is ready for you</h2>
-        <p class="under-text">Test your knowledge, challenge yourself, and discover something new!</p>
-        <button class="start-quiz-button" id="startQuizBtn">
+        <h2 class="head-title" tabindex="1">An engaging quiz is ready for you</h2>
+        <p class="under-text" tabindex="2">Test your knowledge, challenge yourself, and discover something new!</p>
+        <button class="start-quiz-button" id="startQuizBtn" tabindex="3">
           Start quiz
           <svg 
             class="arrow-icon"
@@ -156,19 +156,19 @@
       </div>
     </section>
 
-    <section id="quizPage" class="quiz-page hidden">
+    <section id="quizPage" class="quiz-page hidden" aria-label="quiz page">
       <!-- Question Box --> 
       <div class="questions-container"> 
         <!-- Current question out of total counter -->
         <span class="counter-display"></span>
         <!-- Current question -->
         <div class="question-container">
-          <div id="questionsContainer"></div>
+          <div id="questionsContainer" tabindex="1"></div>
         </div>
       </div>
 
       <!-- Question mark -->
-      <img class="question-mark" src="./src/assets/images/questionmark.svg" alt="question mark with a lot of other question marks in different sizes" width="100" height="100">
+      <img class="question-mark" src="./src/assets/images/questionmark.svg" alt="question mark with a lot of other question marks in different sizes" width="100" height="100" loading="lazy">
 
       <!-- Boxes -->
       <div id="answersContainer" class="answers-container">
@@ -221,11 +221,11 @@
     <section id="resultsPopup" class="results-popup hidden">
       <div id="resultsContainer" class="results-container">
         <!-- Icon -->
-        <img id="resultIcon" class="result-icon" src="/sad_face.svg" alt="black colored sad face icon">
+        <img id="resultIcon" class="result-icon" src="/sad_face.svg" alt="black colored sad face icon" width="100" height="100" loading="lazy">
         <!-- Results info -->
-        <div id="totalScore" class="result-text">You scored:</div>
-        <div id="totalPoints" class="result-text">Total score: 500 points</div>
-        <div id="totalSectionTime" class="result-text">It took you 01:00:00 minutes</div>
+        <div id="totalScore" class="result-text"></div>
+        <div id="totalPoints" class="result-text"></div>
+        <div id="totalSectionTime" class="result-text"></div>
         <p class="result-under-text">Would you like to play a new quiz?</p>
         <!-- Restart quiz button -->
         <button id="restartQuizBtn" class="restart-quiz-btn">

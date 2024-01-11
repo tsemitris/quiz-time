@@ -444,7 +444,6 @@ main {
     .quiz-page {
         min-height: 100vh;
         @include gridCreation(column, 12, 1fr, 20px);
-        padding: var(--footer-height) 0;
 
         .questions-container,
         .question-mark,
@@ -569,11 +568,12 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0 0 var(--footer-height) 0;
             
             .next-question-button {
                 font-size: 0;
                 padding: 10px;
-                margin: 20px 0 0 0;
+                // margin: 20px 0 0 0;
                 border-radius: 50%;
                 background: linear-gradient(to right, var(--question-gradient-start-color) 0%, var(--question-gradient-end-color) 100%);
                 border: none;
@@ -624,7 +624,8 @@ main {
 
         .results-container {
             width: 400px;
-            height: 400px;
+            min-height: 100px;
+            max-height: 400px;
             background-color: var(--results-popup-color);
             border-radius: 22px;
             display: flex;  

@@ -474,7 +474,8 @@ main {
 
         .results-container {
             width: 400px;
-            height: 400px;
+            min-height: 100px;
+            max-height: 400px;
             background-color: var(--results-popup-color);
             border-radius: 22px;
             display: flex;  

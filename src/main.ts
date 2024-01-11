@@ -159,8 +159,10 @@ function showNextQuestion(): void {
     const answerText = containerButtons[i].querySelector('.answer-text');
     
     if (answerText !== null) {
-      // Add the new answer in the button
+      // Add the new answer in the button   
       answerText.textContent = currentAnswer;
+      // ally Removes the correct / incorrect aria label who is leftover from the previous button
+      containerButtons[i].removeAttribute('aria-label');
     }
 
     containerButtons[i].addEventListener('click', handleAnswer);
@@ -172,7 +174,18 @@ function showNextQuestion(): void {
   // Show next button before all questions been answered
   nextBtn?.classList.remove('hidden');
 
+  // a11y
+  if (currentQuestionIndex !== 0) {
+    // Next button
+    nextBtn?.removeAttribute('aria-label');
+    nextBtn?.setAttribute('aria-label', `${currentQuestion.question} Tab to listen the answers`);
+    
+    // Question
+    questionsContainer?.removeAttribute('tabindex');
+  }
+
   currentQuestionIndex += 1;
+
 
   // Check if all questions are answered
   if (currentQuestionIndex === totalQuestions) {
@@ -207,9 +220,14 @@ function handleAnswer(event: Event): void {
   
   // Updates score with 5 points if answer is correct
   if (isCorrect) {
+    // a11y for correct answer
+    clickedBtn?.setAttribute('aria-label', 'Correct answer, five points has added to your score');
     score += 5;
     usersCorrectAnswers += 1;
     updateScoreDisplay();
+  } else {
+    // a11y for incorrect answer
+    clickedBtn?.setAttribute('aria-label', `Incorrect answer, the correct answer was ${correctAnswerString}`);
   }
   // Mark the buttons based on whether the answer is correct or incorrect
   markAnswerButtons(correctAnswerString, clickedBtn, isCorrect);
@@ -225,6 +243,14 @@ function handleAnswer(event: Event): void {
 
   // Set the flag to indicate that the user has answered the current question
   hasAnswered = true;
+
+  // a11y Remove the tabindex from question
+  if (currentQuestionIndex === totalQuestions) {
+    questionsContainer?.removeAttribute('tabindex');
+  }
+
+  // a11y for next button
+  nextBtn?.removeAttribute('aria-label');
 }
 
 /* - - - - - - - - - - - - DISABLE ANSWER BUTTONS - - - - - - - - - - - - 
@@ -292,6 +318,14 @@ function displayFinalResults(): void {
   // This variables is for change the image in the result popup
   const currentSrc = resultIcon?.currentSrc;
   const baseURL = currentSrc?.substring(0, currentSrc.lastIndexOf('/') + 1);
+
+  restartQuizBtn?.removeAttribute('aria-label');
+  restartQuizBtn?.setAttribute(
+    'aria-label',
+    `Congratulations, you have complete the quiz! You answered ${usersCorrectAnswers} out of ${totalQuestions},
+    with a score of ${score}. It took you ${formattedNumber(minutes)} minutes and ${formattedNumber(seconds)} seconds to
+    complete the whole quiz. Would you like to play a new quiz? You have selected Play again button.
+  `);
   
   
   if (usersCorrectAnswers === totalQuestions) {
@@ -381,6 +415,9 @@ function restartQuiz(): void {
   }
   // Show score counter when quiz starts again
 
+  // a11y
+  restartQuizBtn?.removeAttribute('aria-label');
+  questionsContainer?.setAttribute('tabindex', '1');
   updateTimer();
   updateScoreDisplay();
   updateCounterDisplay();
