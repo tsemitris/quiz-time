@@ -241,7 +241,6 @@ main {
 
     .home-page {
         @include gridCreation(column, 12, 1fr, 20px);
-        position: relative;
         overflow: hidden;
         
         .boxes-container,
@@ -254,7 +253,8 @@ main {
             grid-row: 1 / span 1;
             height: 333px;
             @include gridCreation(row, 2, 1fr, 23px);
-            margin: 93px 0;
+            position: relative;
+            margin: 93px 0 0 0;
             
             .upper-container,
             .lower-container {
@@ -295,14 +295,13 @@ main {
         // Main page info box
         .main-info-container {
             background-color: var(--info-container);
-            grid-row: 1 / span 1;
+            grid-row: 2 / span 1;
             grid-column: 5 / span 4; 
             height: 277px;
             border-radius: 17px;
-            margin: 0 0 100px 0;
+            margin: 73px 0;
             padding: 20px;
-            position: absolute;
-            bottom: 0;
+            position: relative;
             @include centerText(center, center);
             flex-direction: column;
             animation: bottomToCurrentPosition 1s ease-in-out 0s 1;
@@ -384,7 +383,7 @@ main {
 
         // Main page background
         .background-shapes {
-            grid-row: 1 / span 1;
+            grid-row: 1 / span 3;
             min-height: 100vh;
             max-height: max-content;
             z-index: -1;
@@ -525,14 +524,14 @@ main {
                 transition: box-shadow .4s ease-in-out 0s;
                 cursor: pointer;
 
-                &:hover {
-                    box-shadow: inset 0 0 0 8px var(--answer-hover-color);
-                    transition: box-shadow .4s ease-in-out 0s;
-                }
-
                 &:disabled {
                     color: black;   
                     cursor: default;
+                }
+
+                &:hover {
+                    box-shadow: inset 0 0 0 8px var(--answer-hover-color);
+                    transition: box-shadow .4s ease-in-out 0s;
                 }
 
                 .answer-label {
@@ -570,21 +569,20 @@ main {
             align-items: center;
             
             .next-question-button {
-                &:disabled {
-                    background: gray;
-                    opacity: .5;    
-                    cursor: default;
-                }
-            }
-
-            .next-question-button {
                 font-size: 0;
                 padding: 10px;
+                margin: 20px 0 0 0;
                 border-radius: 50%;
                 background: linear-gradient(to right, var(--question-gradient-start-color) 0%, var(--question-gradient-end-color) 100%);
                 border: none;
                 transform: scale(.5);
                 cursor: pointer;
+
+                &:disabled {
+                    background: gray;
+                    opacity: .5;    
+                    cursor: default;
+                }
 
                 .arrow-icon {
                     fill: white;
@@ -634,7 +632,6 @@ main {
             font-size: var(--results-popup-font-size);
             position: relative;
             opacity: 0;
-            // animation: leftToRightTransition .8s cubic-bezier(0.075, 0.82, 0.165, 1) .5s 1 forwards;
 
             .result-icon {
                 width: 162px;
