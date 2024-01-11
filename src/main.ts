@@ -85,9 +85,9 @@ let randomQuestions = getRandomQuestions();
 
 // - - - - - - - - - - - - - - - - QUIZ TIMER - - - - - - - - - - - - - - - -
 let timerInterval: number;
-let seconds: number = 0;
-let minutes: number = 0;
 let hours: number = 0;
+let minutes: number = 0;
+let seconds: number = 0;
 
 startQuizBtn?.addEventListener('click', startTimer);
 
@@ -368,10 +368,21 @@ function displayFinalResults(): void {
     totalPoints.textContent = `Total points: ${score}`;
   }
   
+  // Print out the total section time
   if (totalSectionTime !== null) {
-    // TODO add hours as well
-    const formattedTime = formattedNumber(minutes) + ':' + formattedNumber(seconds);
-    totalSectionTime.textContent = `It took you ${formattedTime} minutes`;
+    if (hours >= 1) {
+      totalSectionTime.textContent = `
+        It took you ${formattedNumber(hours)}:${formattedNumber(minutes)}:${formattedNumber(seconds)}
+      `;
+    } else if (minutes >= 1) {
+      totalSectionTime.textContent = `
+        It took you ${formattedNumber(minutes)}:${formattedNumber(seconds)}
+      `;
+    } else if (seconds >= 0) {
+      totalSectionTime.textContent = `
+        It took you ${formattedNumber(seconds)} seconds!
+      `;
+    }
   }
 
   // Points and timer
