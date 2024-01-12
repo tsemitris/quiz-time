@@ -425,7 +425,7 @@ function restartQuiz(): void {
 
   // a11y
   restartQuizBtn?.removeAttribute('aria-label');
-  questionsContainer?.setAttribute('tabindex', '1');
+  questionsContainer?.setAttribute('tabindex', '0');
   updateTimer();
   updateScoreDisplay();
   updateCounterDisplay();
