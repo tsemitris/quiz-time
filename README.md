@@ -1,4 +1,4 @@
- # Quiz Time
+# Quiz Time
 
 ## 📄 About The Project 
 This quiz page was a team project during our ‘Agile Working Methods’ and ‘Javascript basic’ courses. The focus was to code a quiz page with different features (more info below) using Typescript and also cooperate using agile working methods such as Scrum. We worked together during four weeks where we had Scrum meetings every working day. We divided our work in different sprints and had sprint retrospective meeting after each. Everyone had the role of being the scrum master and we split up the project among the whole team. 
@@ -92,8 +92,3 @@ These features collectively contribute to a dynamic and engaging quiz experience
 
 [![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rebecka-g%C3%B6thlin-963037280/)
 [![Github](https://img.shields.io/badge/Rebecka%20Göthlin-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RebeckaGothlin)
-
-
-
-
-

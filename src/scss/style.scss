@@ -1,12 +1,13 @@
 // Css normalize
 @import 'vendor/normalize';
+@import 'scrollbar/scrollbar';
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     @import 'mobile';
 }
-// @media screen and (min-width: 768px) and (max-width: 1024px) {
-//     @import 'tablet';
-// }
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    @import 'tablet';
+}
 @media screen and (min-width: 1025px) {
     @import 'desktop';
 }
