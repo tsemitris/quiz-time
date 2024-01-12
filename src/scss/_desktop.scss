@@ -582,7 +582,7 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 0 var(--footer-height) 0;
+            margin: var(--footer-height) 0 var(--footer-height) 0;
             
             .next-question-button {
                 font-size: 0;
