@@ -70,7 +70,8 @@ These features collectively contribute to a dynamic and engaging quiz experience
 ## Validation
 
 ### ✅ Lighthouse
-
+<img src="/validation/lighthouse-mobile.png" width="200" alt="lighthouse report on mobile">
+<img src="/validation/lighthouse-desktop.png" width="200" alt="lighthouse report on desktop">
 
 ### ✅ HTML & CSS 
 ![HtmlCssValidation](https://imgur.com/PMGZa9K.png)
