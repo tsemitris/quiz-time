@@ -1,4 +1,4 @@
- # Quiz-time
+ # Quiz time
 
 ## 📄 About the project 
 This quiz page was a team project during our ‘Agile Working Methods’ and ‘Javascript basic’ courses. The focus was to code a quiz page with different features (more info below) using Typescript and also cooperate using agile working methods such as Scrum. We worked together during four weeks where we had Scrum meetings every working day. We divided our work in different sprints and had sprint retrospective meeting after each. Everyone had the role of being the scrum master and we split up the project among the whole team. 
@@ -78,10 +78,10 @@ These features collectively contribute to a dynamic and engaging quiz experience
 ## 👥 The team
 
 [![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/augustine-al-zebary-1094a5163/)
-[![Github](https://img.shields.io/badge/Augustine%20AI%20Zebrary-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ogen1998)
+[![Github](https://img.shields.io/badge/Augustine%20AI%20Zebary-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ogen1998)
 
 [![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://github.com/DiemBang)
-[![Github](https://img.shields.io/badge/Dieam%20Bang-100000?style=for-the-badge&logo=github&logoColor=white)](https://www.linkedin.com/in/diem-bang-6357a025/)
+[![Github](https://img.shields.io/badge/Diem%20Bang-100000?style=for-the-badge&logo=github&logoColor=white)](https://www.linkedin.com/in/diem-bang-6357a025/)
 
 [![LinkdIn](https://img.shields.io/badge/-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/helena-skagerlid-7b8206203/)
 [![Github](https://img.shields.io/badge/Helena%20Skagerlid-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/helenaskagerlid)
